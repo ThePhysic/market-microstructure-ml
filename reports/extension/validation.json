@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "pending-final-accounting-and-adversarial-review",
+  "status": "PASS",
   "source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f",
   "frozen_revision": "1f4d584",
   "reference_experiment_id": "ext-b1465a64b304025d",
@@ -15,7 +15,11 @@
     "clean_checkout_passed": 374,
     "clean_checkout_seconds": 54.18,
     "renderer_after_presentation_fix_passed": 4,
-    "static_analysis": "Ruff 0.14.1 E9,F63,F7,F82 PASS"
+    "static_analysis": "Ruff 0.14.1 E9,F63,F7,F82 PASS",
+    "final_clean_checkout_passed": 374,
+    "final_clean_checkout_seconds": 54.45,
+    "final_clean_checkout_revision": "6e94a9e1637bb24d01a8e590dd1e45b0a435a0d4",
+    "final_clean_checkout_source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f"
   },
   "data": {
     "dates": 48,
@@ -81,7 +85,13 @@
     ],
     "method": "Separate clean checkout and environment executed the same frozen _inputs/_execute functions independently before reading reference metrics. The canonical projection was compared afterward; this is unchanged reproduction, not independent statistical evidence."
   },
-  "final_adversarial_review": "pending",
+  "final_adversarial_review": {
+    "status": "PASS",
+    "reviewer": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "remaining_complaints": [],
+    "memo": "docs/extension/reviews/final.json"
+  },
   "publication": "Reviewed source and aggregate bundle will be pushed only after clean final review; private remote commit and hosted CI are verified after push.",
   "excluded_from_publication": [
     "historical event rows",
@@ -144,5 +154,19 @@
     "no_trade_pnl": "0",
     "scope": "Marked P&L sums independent segments. Zero-cost diagnostic removes added fees/slippage; observed spread crossing remains. No live fills or profitability claim."
   },
-  "final_accounting_audit": "pending"
+  "final_accounting_audit": {
+    "status": "PASS",
+    "artifact": "reports/extension/accounting-audit.json",
+    "cases": 20,
+    "assertions": 161457069,
+    "fills_checked": 1009186,
+    "orders_checked": 968134,
+    "source_observation_checks": 6747780,
+    "exact_cashflow_fee_inventory_mark_checks": true,
+    "cost_basis_precision_digits": 128,
+    "maximum_decomposition_residual_quote": "0",
+    "scope": "Independent normalization-only audit; does not call simulator/replay/analytics/fitting. Scalar assertions are not additional unit tests."
+  },
+  "engineering_checks_status": "PASS",
+  "acceptance_scope": "Completed bounded engineering/reproducibility/review requirements. Predictive precision milestone is explicitly unmet; no conclusive market-edge or profitability claim."
 }

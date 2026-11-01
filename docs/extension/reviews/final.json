@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "stage": "final-pre-publication",
+  "status": "PASS",
+  "reviewer": {"model": "gpt-6-astra", "reasoning_effort": "medium"},
+  "remaining_complaints": [],
+  "conclusion": "No remaining substantive complaints with the completed bounded extension implementation, frozen empirical evidence, interpretation, reproducibility or prepared publication bundle. This is engineering acceptance of an explicitly exploratory study, not confirmation of predictive generalization or profitable trading.",
+  "experiment_id": "ext-b1465a64b304025d",
+  "source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f",
+  "observed_revision": "6e94a9e1637bb24d01a8e590dd1e45b0a435a0d4",
+  "dataset_identity": "6177d8a2aea0a11000400ae0c59a6640e747af626057e9a2b5ebb6e7cb6c0563",
+  "protocol_identity": "31c4eec155c2c644779d698f20f6c56993b82e5edba241f95934fa6d045f2022",
+  "canonical_scientific_projection_sha256": "2b415a52cbb778e71b029f1ee1f840c0789b25c342187dea7fc57a7408f15ee5",
+  "reference_file_sha256_at_review": "9cf1dbfd0dd007e29c31e2152a446ad898ec85672fe7c374abdbde7577183e60",
+  "reviewed_evidence": [
+    "docs/extension/reviews/pre-empirical.json",
+    "docs/extension/freeze.json",
+    "docs/extension/research-report.md",
+    "docs/extension/milestones.md",
+    "docs/extension/applicant-guide.md",
+    "reports/extension/reference/experiment.json",
+    "reports/extension/reference/report.html",
+    "reports/extension/reproduction.json",
+    "reports/extension/numeric-audit.json",
+    "reports/extension/accounting-audit.json",
+    "reports/extension/validation.json",
+    "reports/extension/benchmark.json",
+    "reports/extension/fit-profile.json"
+  ],
+  "independent_reviewer_checks": [
+    "Read-only CLI verify independently passed actual raw checksums, selection, coverage, normalized-state fingerprint, source/build/runtime and protocol.",
+    "Independently compared the complete canonical scientific projection with the separate clean-checkout execution: exact equality across research, simulations, adaptation, inputs and signal/ledger/simulation hashes.",
+    "Independently checked current source identity against the reference and confirmed no executable change since the final pre-empirical source binding.",
+    "Independently checked all 20 scenario/policy PnL signs, net-plus-fees gross reconciliation and formal exploratory precision flags.",
+    "Confirmed original source preservation: differences from original frozen revision 2ebb818 under src/market_microstructure consist only of new extension files.",
+    "Inspected final desktop 1440px and mobile 320px research screenshots: precision failure and numeric thresholds remain prominent, legible and consistent with the artifact.",
+    "Inspected tracked/unignored publication candidates; no historical CSV/gzip, NPZ, trained-model or detailed local-ledger candidates were present.",
+    "Resolved original-run versus published-reference byte-hash difference: parsed JSON is identical at every field; canonical scientific identity is unchanged."
+  ],
+  "supporting_audits": {
+    "offline_tests": "374 integrated and 374 clean-checkout tests reported passing; reviewer independently ran 138 initial extension tests, 41 post-fix research/configuration tests and 4 renderer tests.",
+    "numeric_audit": "4,244 independent aggregate numerical checks PASS. Fitted probability scores cannot be reconstructed from confusion matrices alone; unchanged full reproduction also matched them exactly.",
+    "accounting_audit": "All 20 fixed cases PASS across 161,457,069 assertions. Independent audit imports upstream normalization but not replay, simulation or analytics. Source observations, later-event execution, signal provenance, depths, lots, cash, fees, inventory, marks, segment summaries and hashes reconcile.",
+    "accounting_precision": "Cashflows, fees, quantities, marks and canonical hashes require exact equality. Only recurring proportional cost-basis decomposition uses the disclosed 1e-54 quote-unit bound against an independent 128-digit calculation; this does not relax exact portfolio accounting.",
+    "browser": "17 actual-reference browser checks PASS at 320, 390, 720 and 1440 widths, with no runtime exceptions, network requests or outstanding visual complaints."
+  },
+  "required_interpretation_retained": {
+    "research_status": "exploratory_precision_unmet",
+    "research_decisiveness_met": false,
+    "primary_mean_difference": 0.053071300842719354,
+    "primary_conditional_95_interval": [0.023520068274924914, 0.06895934763734886],
+    "achieved_half_width": 0.022719639681211972,
+    "required_half_width": 0.015,
+    "precision_assessment": "Both development planning and achieved precision fail. Favorable conditional intervals do not restore confirmatory status. Three-month block stationarity/dependence assumptions and sparse month-start sampling remain explicit limitations.",
+    "execution_assessment": "All sixteen trading scenario/policy cases have negative hypothetical marked PnL; four no-trade cases remain zero. Zero-added-cost diagnostic retains bid/ask spread crossing and later-observation execution. No real-fill or profitability claim.",
+    "capital_assessment": "Each segment starts independently with equal cash. Unresolved inventory is marked at its last observed best bid; no unseen sale, exit fee, gap return, continuous annual equity or annualized Sharpe is fabricated.",
+    "external_method": "Development-only queue-imbalance methodological adaptation, not numerical replication of the published equity study.",
+    "performance": "Measured synthetic engine timing, native process peak memory and exact batch parity; short fit profile is not an end-to-end stage decomposition. No fully out-of-core ML or bespoke C++ acceleration claim."
+  },
+  "publication_boundary": "Publish code, synthetic fixtures, metadata, hashes and qualifying aggregate research reports only. Historical records, detailed signals/orders/fills/ledgers, fitted preprocessing and trained models remain local. Private repository access does not override data rights.",
+  "delivery_scope": "This memo clears the prepared source and aggregate bundle for the authorized private publication. Remote commit/privacy verification and hosted CI occur after push and are not claimed as already completed by this pre-publication review."
+}
