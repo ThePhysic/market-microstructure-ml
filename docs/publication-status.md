@@ -13,15 +13,18 @@ frozen research manifests and historical acceptance memos.
 | Git remote / branch | `https://github.com/ThePhysic/market-microstructure-ml.git`, `main` |
 | Published revision verified before polish | [`5acd9579db5605386284b88e76b41cd325661207`](https://github.com/ThePhysic/market-microstructure-ml/commit/5acd9579db5605386284b88e76b41cd325661207) |
 | Hosted CI for that revision | [Offline research checks, run 41348148399](https://github.com/ThePhysic/market-microstructure-ml/actions/runs/41348148399): completed, **success** |
+| Published polish revision | [`a7d3413ebe9735fa87a7eb5f75cfbe33326bbd06`](https://github.com/ThePhysic/market-microstructure-ml/commit/a7d3413ebe9735fa87a7eb5f75cfbe33326bbd06) |
+| Hosted CI for the polish revision | [Offline research checks, run 41351668682](https://github.com/ThePhysic/market-microstructure-ml/actions/runs/41351668682): completed, **success**, Ubuntu and Windows |
 | Tested hosted platforms | `offline (ubuntu-latest)` and `offline (windows-latest)`, both success |
 | Hosted check scope | Locked installation, offline tests, both synthetic CLI demos, synthetic frame/batch benchmark parity; no licensed historical data is fetched |
 | Code license | No license file or GitHub-detected license; choosing one remains an owner decision |
 
-**Polish revision:** at this record's initial creation, the documentation and
-attribute changes are local and have not passed a new hosted run. The successful
-run above applies only to the exact prior revision. A post-push verification
-snapshot will identify any subsequently verified polish revision separately.
-For later changes, inspect the [workflow history](https://github.com/ThePhysic/market-microstructure-ml/actions/workflows/ci.yml)
+**Verification scope:** this record was updated after `a7d3413` was pushed and
+its own hosted workflow passed on both platforms. The two successful runs above
+apply only to their named revisions. This documentation snapshot is committed
+after that verification; it does not certify its own later commit's hosted
+result. For subsequent commits, including the status-record update, inspect the
+[workflow history](https://github.com/ThePhysic/market-microstructure-ml/actions/workflows/ci.yml)
 and its exact `headSha`; a prior green run is not proof for a later commit.
 
 ## Earlier private-publication plans
@@ -79,10 +82,12 @@ and `proposal/index.html` as `linguist-documentation`. Report contents and Pytho
 sources are unchanged; the files remain available. These exclusions follow
 [Linguist's documented overrides](https://github.com/github-linguist/linguist/blob/main/docs/overrides.md).
 
-Local `git check-attr` must confirm every tracked HTML report matches its rule
-and that Python files remain unmarked. GitHub recalculates language statistics
-after publication; verify the languages API and repository language bar after
-the push rather than treating local attributes as a hosted result.
+Local `git check-attr` confirms every tracked HTML report matches its rule and
+all Python files remain unmarked. After publishing polish revision `a7d3413`,
+GitHub's languages API returned **Python: 477,881 bytes**, with no HTML entry
+(100% of the reported language bytes are Python). The source/report bytes are
+unchanged; this is a verified hosted classification result, not an estimate
+from local attributes.
 
 The repository description was applied and read back from GitHub:
 
@@ -105,7 +110,11 @@ separate from Git commits; visibility remained public.
   image, comparison table, code block and reviewer navigation.
 - Attributes match all three tracked HTML reports and the proposal. All **47**
   tracked Python implementation/test files remain unmarked by the Linguist
-  overrides. This is local attribute verification, not a hosted language result.
+  overrides. Hosted language verification is recorded separately above.
+- The published GitHub README passed **six Chromium browser checks** at desktop
+  1440px and mobile 390px widths. The actual 1440x844 report screenshot loads,
+  the quick-start code and Markdown-report alternative render, and neither
+  viewport has page-wide horizontal overflow. Screenshots were also inspected.
 - **86** protected source/test/configuration/build/CI, empirical artifact and
   historical review/decision files remain unchanged against `5acd957`.
   The frozen executable identity is still
