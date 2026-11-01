@@ -70,8 +70,9 @@ than being silently accepted under an undocumented tolerance.
 
 Provider terms cover free samples. Raw/processed event-level data, per-event
 predictions and fitted models remain local and are excluded from GitHub,
-including the private repository. Research reports contain qualifying aggregate
+under either public or private visibility. Research reports contain qualifying aggregate
 outputs rather than substituting for the underlying data service.
+See the [publication-status record](publication-status.md) for current visibility.
 
 The synthetic HTML design proposal and demo make no empirical claim. Their
 usability review does not validate market predictability. Consult the actual

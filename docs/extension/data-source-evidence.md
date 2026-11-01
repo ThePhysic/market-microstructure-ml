@@ -91,8 +91,10 @@ external model sharing. Clause 23 separately bars Coinbase ML use, which this
 Bitstamp selection avoids. Only code, synthetic fixtures, metadata, hashes and
 qualifying aggregate reports are published. Historical rows, signals, fills,
 ledgers, fitted preprocessing values and trained models remain ignored/local,
-including in the private repository. The local simulator does not expose a
-provider-data service to third parties.
+under either public or private repository visibility. The local simulator does
+not expose a provider-data service to third parties. See the current
+[publication-status record](../publication-status.md); earlier private-release
+plans do not expand these data-use permissions.
 
 ## Verification checkpoint
 

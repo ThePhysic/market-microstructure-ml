@@ -107,12 +107,15 @@ permits qualifying non-reconstructible aggregate statistics in research reports.
 Clause 9.5 also restricts sharing trained models or access outside authorized
 customer users.
 
-Even the private GitHub repository therefore excludes raw data, processed
+The GitHub repository, now public, therefore excludes raw data, processed
 row-level samples, per-event predictions and fitted models. It contains source,
 independently generated synthetic fixtures, acquisition metadata, checksums and
 non-reconstructible aggregate research artifacts. Users obtain their own data
 under then-current provider terms. No paid subscription, account, API key or
 live exchange connection was used.
+
+The [publication-status record](publication-status.md) documents current
+visibility separately from the original private-publication authorization.
 
 ## Alternatives considered
 

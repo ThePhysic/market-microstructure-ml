@@ -172,12 +172,17 @@ execution merely because the repository contains generated code and reports.
 ## Sharing and original-study reproduction
 
 The [provider terms](https://docs.tardis.dev/legal/terms-of-service) restrict
-historical data and trained-asset sharing. Private GitHub access is access to
-this code and permitted aggregates; it is not a provider-data license. An
+historical data and trained-asset sharing. This public repository provides code
+and qualifying aggregates; repository access is not a provider-data license. An
 external reviewer obtains their own permitted data and runs the local tool.
 Do not send historical event rows, signals, ledgers, fitted transformations
 or model assets through repository attachments or publish a hosted
 data-backed analytics service.
+
+The [publication-status record](../publication-status.md) distinguishes current
+public visibility and hosted CI from the earlier private-publication approvals.
+No open-source license has been selected; public visibility does not grant a
+general right to reuse the code or any rights to provider data or trained assets.
 
 The original 2020 reference uses frozen v1 source revision **2ebb818**. Its
 exact verification/reproduction must run in the separate worktree described

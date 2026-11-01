@@ -1,16 +1,86 @@
 # Market Microstructure ML & Validation Pipeline
 
-Reproducible Python software for historical order-book research, causal replay
-and hypothetical spot execution. The original study compares predictive models;
-the broader extension asks whether book features improve on past price history
-and separately evaluates a fixed execution policy.
+Python research software that turns historical order books into reproducible
+prediction experiments, deterministic market replay and hypothetical execution
+reports. Try the offline synthetic demo below without obtaining market data.
 
-The project combines auditable historical-data ingestion, causal features,
-chronological evaluation, explicit leakage checks and portable research reports.
-It supports honest positive, negative and inconclusive findings. Classification
-scores alone do not establish trading profitability.
+[![Offline research checks](https://github.com/ThePhysic/market-microstructure-ml/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ThePhysic/market-microstructure-ml/actions/workflows/ci.yml)
 
-## Broader spot extension: start here
+## What is engineered
+
+- **Market-data processing:** validated top-five order books, chronological
+  replay, explicit gaps and source checksums.
+- **Causal ML evaluation:** receipt-time features, train-only preprocessing,
+  purged chronological splits and baseline comparisons.
+- **Hypothetical execution:** later-observation orders, displayed-depth limits,
+  configurable fees/delays/slippage and exact decimal cash/inventory accounting.
+- **Auditable research:** frozen configurations, date-block uncertainty,
+  repeatable reports, 374 offline tests and independent numerical/accounting
+  reconciliation with clean-checkout reproduction.
+
+**Stack:** Python 3.12, NumPy, pandas, scikit-learn, SciPy, pytest, uv and GitHub
+Actions on Ubuntu and Windows. The interface is a local CLI with portable
+HTML/Markdown/JSON reports.
+
+## Findings at a glance
+
+| Study | Historical coverage | Finding |
+| --- | --- | --- |
+| Original ML pipeline | Deribit BTC-PERPETUAL, 12 short opening windows in 2020 | Boosted trees led development; logistic regression won both final dates. A consistent advantage for boosting was not established. |
+| Research/backtesting extension | Bitstamp BTCUSD spot, 48 dates in 2021-2024; 384 sampled windows and 631,463 valid states | Book-feature logistic improved final date-mean macro F1 by **+0.053071** over price-history-only logistic (0.458722 vs 0.405650). The finding remains **exploratory: the predeclared precision requirement was not met**. |
+
+The extension's interval half-width is 0.022720 against a 0.015 target. All 16
+tested trading policy/scenario combinations produced **negative hypothetical
+marked P&L**; the four no-trade cases were zero. These sparse samples do not
+establish a persistent market edge, profitable execution, real exchange fills
+or live-trading capability. The two studies use different instruments, targets
+and evaluation periods; their scores are not directly comparable.
+
+## Actual research report
+
+[![Actual aggregate Bitstamp research report, showing the unmet precision requirement and model comparison](docs/extension/assets/research-report.png)](reports/extension/reference/report.html)
+
+*Screenshot of the implemented aggregate research report. Download or open the
+[HTML report](reports/extension/reference/report.html) locally, or read its
+[Markdown version](reports/extension/reference/report.md) on GitHub.*
+
+The separate [interactive proposal](proposal/index.html) is a **synthetic design
+reference**. The implemented product is the CLI and its generated reports.
+
+## Quick start: offline synthetic demonstration
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and clone
+the public repository. Installation downloads the pinned Python environment and
+packages; the demo itself runs offline and requires no licensed historical data.
+
+```sh
+git clone https://github.com/ThePhysic/market-microstructure-ml.git
+cd market-microstructure-ml
+uv sync --frozen --extra dev
+uv run --offline python -m market_microstructure.extension demo --rows-per-date 80 --output artifacts/extension/demo-review
+```
+
+Open the printed `report.html` path in your browser; no server is required.
+Synthetic outcomes demonstrate software behavior and provide no market evidence.
+For another run, choose a fresh output directory. Run the existing offline suite
+with `uv run --offline python -m pytest -q -p no:cacheprovider`.
+
+## Reviewer navigation
+
+- [Extension findings and limitations](docs/extension/research-report.md),
+  [methodology](docs/extension/research-design.md) and
+  [preregistered protocol](docs/extension/preregistered-study.md).
+- [Historical reproduction commands](#extension-methodology-and-reproduction),
+  [original frozen checkout](#reproduce-the-original-2020-study-in-its-frozen-checkout)
+  and [original findings](docs/research-report.md).
+- [Validation evidence](reports/extension/validation.json),
+  [milestones](docs/extension/milestones.md) and
+  [applicant/reviewer guide](docs/extension/applicant-guide.md).
+- [Current publication and CI status](docs/publication-status.md) and
+  [data-use restrictions](docs/extension/data-source-evidence.md#permission-and-publication-boundary).
+  The repository is public; no open-source license has been selected.
+
+## Extension methodology and reproduction
 
 The extension asks whether book features improve on **past midpoint history
 alone**, then separately evaluates a declared hypothetical execution policy.
@@ -37,19 +107,6 @@ P&L totals sum independent segment trials, not returns on one continuous account
 See the [research account](docs/extension/research-report.md) for class-level
 differences, cost scenarios and limits. The original study remains unchanged;
 its different instrument, target and periods prevent direct score comparisons.
-
-[View the actual aggregate report preview](docs/extension/assets/research-report.png).
-
-Install the locked environment in this checkout, then try the offline extension:
-
-    uv sync --frozen --extra dev
-    uv run python -m pytest -p no:cacheprovider
-    uv run python -m market_microstructure.extension demo --rows-per-date 80 --output artifacts/extension/demo-review
-
-The demo uses synthetic data. Open the report.html path printed by the command
-directly in a browser; no server is required. The core product is a local CLI
-and readable reports. The earlier [interactive proposal](proposal/index.html)
-is a synthetic design reference, not a data-connected trading application.
 
 For historical work, review the [source and permission evidence](docs/extension/data-source-evidence.md),
 [preregistered study](docs/extension/preregistered-study.md) and
@@ -87,11 +144,12 @@ The simulator is long/flat spot with explicit costs, action delays and displayed
 depth assumptions. Each segment starts with independent cash; unresolved final
 inventory is marked at observed bid, not sold through an unseen gap. There are
 no passive queue fills or live exchange orders. Historical signals, detailed
-ledgers, fitted preprocessing and models stay local. The private repository
-shares permitted aggregates, code and synthetic fixtures; private GitHub access
-alone does not grant rights to the provider's data or trained assets. External
+ledgers, fitted preprocessing and models stay local. This public repository
+shares qualifying aggregates, code and synthetic fixtures. Repository access
+does not grant rights to the provider's data or trained assets. External
 reviewers obtain their own permitted data. No hosted data-backed service is
-provided.
+provided. See the [publication-status record](docs/publication-status.md) for
+verified visibility, CI and the relationship to earlier private-release plans.
 
 The [milestone index](docs/extension/milestones.md) identifies evidence and
 remaining gates. The [applicant guide](docs/extension/applicant-guide.md) gives
@@ -126,11 +184,11 @@ for measured results, warnings and the exact code/config/data fingerprints.
 The [research contract](docs/decisions/001-predeclared-research-contract.md)
 defines choices made before model scores were inspected.
 
-## Install and try the workflow
+## Original-study demonstration
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and clone
-this repository. The project pins Python 3.12.15 and exact dependencies in uv.lock.
-Initial environment installation requires access to the Python/package sources.
+Run the following original-study commands in the **frozen v1 worktree above**.
+That checkout pins Python 3.12.15 and exact dependencies in uv.lock. Initial
+environment installation requires access to the Python/package sources.
 
     uv sync --frozen --extra dev
     uv run python -m pytest -p no:cacheprovider
@@ -256,8 +314,8 @@ reproducibility/review. Phase evidence is under
 [docs/phase-handoffs](docs/phase-handoffs), and
 [limitations](docs/limitations.md) explain the boundaries on interpretation.
 
-The final clean checkout passes 226 tests and reproduces the reference metrics
-exactly. The [validation record](reports/validation.json) and
+The original study's final clean checkout passed 226 tests and reproduced its
+reference metrics exactly. The [original validation record](reports/validation.json) and
 [P6 handoff](docs/phase-handoffs/P6.md) distinguish the initial frozen study,
 report-format corrections and unchanged reproduction runs.
 

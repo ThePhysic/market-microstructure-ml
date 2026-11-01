@@ -52,11 +52,15 @@ backtest. See [the full evidence note](../docs/data-source-evidence.md).
 ## What stays out of Git
 
 Raw CSV excerpts, gzip prefixes, normalized/feature rows, per-event predictions
-and fitted model weights remain local. These are excluded even from the private
-repository. Synthetic test fixtures are generated independently; they are not
+and fitted model weights remain local. These are excluded from the public
+repository and would also be excluded from private sharing. Synthetic test
+fixtures are generated independently; they are not
 sampled historical records. Published research artifacts contain only metadata
 and qualifying aggregate results.
 
 The terms distinguish internal research/own-model training from redistribution
 of raw or merely sampled/filtered data and trained models. A source-code license
 does not grant rights to the provider's data.
+
+Current publication and CI evidence is in the
+[publication-status record](../docs/publication-status.md).

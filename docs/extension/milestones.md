@@ -3,7 +3,9 @@
 This index separates implementation acceptance, empirical precision and external
 delivery. The [completed research account](research-report.md) reports the new
 measurements; [validation](../../reports/extension/validation.json) records actual
-checks and remaining delivery gates. The original completed 2020 study remains
+checks as observed before publication. Current repository visibility, published
+revisions and hosted CI are recorded separately in the
+[publication-status record](../publication-status.md). The original completed 2020 study remains
 separate. Its historical P0-P6 memos do not establish extension acceptance.
 
 | Milestone | Purpose and review entry point | Checkpoint status |
@@ -65,13 +67,13 @@ offline. No actual event records are embedded in this index.
 | reports/extension/benchmark.json | Repeated synthetic timings, native peak process memory, exact frame/batch ledger parity and environment |
 | reports/extension/validation.json | Clean install/tests, source/data verification, exact numerical/ledger reproduction and local/hosted CI distinctions |
 | docs/extension/reviews/final.json | Final Astra medium review with all substantive complaints resolved |
-| Existing private GitHub remote | Verified privacy, expected branch/commit and successful final push; no restricted historical or fitted assets |
+| GitHub publication | See the [current publication record](../publication-status.md) for verified public visibility, remote revision and hosted CI. Original delivery authorized a private remote; that historical requirement remains in the frozen contract/review. No restricted historical or fitted assets are distributed |
 
 Source freezes precede final scoring; reproductions repeat unchanged decisions
 and are disclosed separately. Benchmark mode generates its local benchmark.json
 under the selected output directory; publication copies that aggregate to the
 stable path above. Review files and validation distinguish completed checks from
-external publication steps. Post-push privacy, commit and hosted workflow status
+external publication steps. Post-push visibility, commit and hosted workflow status
 must be verified separately; a pre-publication commit cannot certify its own push.
 
 ## Acceptance and interpretation
@@ -84,6 +86,6 @@ an inconclusive or negative study can be a completed engineering deliverable.
 
 Historical rows, detailed signals/ledgers, fitted values and model assets remain
 ignored/local. External reviewers obtain their own permitted provider data.
-Private source sharing does not authorize a hosted data-backed service. No
+Public or private source sharing does not authorize a hosted data-backed service. No
 queue-position, real-fill, profitability or continuous annual-curve claim is
 part of this handoff.

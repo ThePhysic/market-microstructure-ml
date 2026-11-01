@@ -2,3 +2,8 @@
 *.png binary
 *.jpg binary
 *.gz binary
+
+# Generated research reports and the design reference are still browsable.
+# Exclude them from language statistics so they do not obscure the Python code.
+reports/**/*.html linguist-generated
+proposal/index.html linguist-documentation
