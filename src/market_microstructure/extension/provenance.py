@@ -38,6 +38,10 @@ def load_source_lock(path: str | Path, config: dict[str, Any]) -> list[dict[str,
     for item in sources:
         if (item.get("exchange"), item.get("symbol"), item.get("market_type")) != ("bitstamp", "BTCUSD", "spot"):
             raise ValueError("Source lock market differs from the reviewed spot instrument")
+        if (item.get("base_currency"), item.get("quote_currency"), item.get("price_unit"), item.get("size_unit")) != ("BTC", "USD", "USD per BTC", "BTC"):
+            raise ValueError("Source units differ from reviewed spot accounting")
+        if item.get("complete_source_gzip") is not True or item.get("gzip_crc_verified") is not True or item.get("off_research_price_grid_cells") != 0 or item.get("off_research_quantity_grid_cells") != 0:
+            raise ValueError("Source integrity or accounting-grid preflight failed")
         selection = item.get("selection", {})
         if selection.get("window_starts_utc_seconds") != config["data"]["windows_seconds"] or selection.get("window_seconds") != config["data"]["window_seconds"]:
             raise ValueError("Source selection differs from the frozen configuration")
@@ -89,12 +93,19 @@ def register_evaluation(freeze: dict[str, Any], *, root: Path | None = None, rep
     registry = json.loads(destination.read_text(encoding="utf-8")) if destination.exists() else {}
     key = digest({"market": "bitstamp:BTCUSD", "dates": freeze["final_dates"]})
     contract = {name: freeze[name] for name in ("protocol_identity", "dataset_identity", "source_identity")}
+    requested_dates = set(freeze["final_dates"])
+    for prior in registry.values():
+        if prior.get("market") != "bitstamp:BTCUSD" or not isinstance(prior.get("final_dates"), list):
+            raise ValueError("Evaluation registry lacks auditable market/date identities")
+        if requested_dates.intersection(prior["final_dates"]) and prior["contract"] != contract:
+            raise ValueError("Overlapping final dates were already bound to different scientific choices")
     existing = registry.get(key)
     if existing is not None and existing["contract"] != contract:
         raise ValueError("These final dates were already bound to different scientific choices")
     if existing is not None and not reproduction:
         raise ValueError("Final evaluation already registered; use reproduce with the frozen reference")
     record = {"contract": contract, "execution_count": (existing or {}).get("execution_count", 0) + 1,
+              "market": "bitstamp:BTCUSD", "final_dates": list(freeze["final_dates"]),
               "reproduction": reproduction, "note": "Registered before fitting; repeats are not independent evidence."}
     registry[key] = record
     write_json(destination, registry)

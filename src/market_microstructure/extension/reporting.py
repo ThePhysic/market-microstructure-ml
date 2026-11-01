@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from html import escape
+from decimal import Decimal, localcontext
 import json
 from pathlib import Path
 from typing import Any
@@ -27,6 +28,46 @@ def _details(title: str, value: Any) -> str:
     return '<details><summary>' + escape(title) + '</summary><pre tabindex="0">' + escape(json.dumps(value, indent=2, ensure_ascii=False)) + '</pre></details>'
 
 
+def _money(value: Any) -> str:
+    if value is None:
+        return "Not reported"
+    with localcontext() as context:
+        context.prec = 80
+        return format(Decimal(str(value)), ",.2f")
+
+
+def _research_overview(research: dict[str, Any]) -> str:
+    final = research.get("final")
+    claims = {
+        "positive_practical_gain": "Book features show a gain exceeding the declared practical threshold.",
+        "equivalent_within_margin": "The estimated difference lies within the declared equivalence margin.",
+        "negative_practical_effect": "Book-feature logistic underperforms the history-only comparison beyond the declared margin.",
+        "rules_out_practical_gain": "The interval rules out the declared size of improvement from book features.",
+        "indeterminate": "The evidence does not settle the declared practical-improvement question.",
+        "exploratory_precision_unmet": "The precision requirement was not met; a decisive research claim is not supported.",
+    }
+    status = final.get("claim_status") if final else None
+    headline = claims.get(status, "Development planning only. Reserved final results have not been scored.")
+    parts = ['<h3>'+escape(headline)+'</h3>']
+    if final:
+        primary = final.get("comparisons", {}).get("book_logistic_vs_history_logistic", {})
+        confidence = primary.get("confidence")
+        interval_text = f"{100*confidence:g}%" if isinstance(confidence, (float, int)) else "Unspecified confidence"
+        parts.append('<p>Final date-mean difference (book minus history): <strong>'+escape(_text(primary.get("mean_difference")))+'</strong>. '+escape(interval_text)+' date-block interval: ['+escape(_text(primary.get("ci_lower")))+', '+escape(_text(primary.get("ci_upper")))+']. These estimates depend on the declared block/stationarity assumptions.</p>')
+        parts.append('<p>Precision target met: <strong>'+escape(str(final.get("precision_target_met")))+'</strong>. Research decision settled: <strong>'+escape(str(final.get("research_decisiveness_met")))+'</strong>. This assessment concerns the sampled dates and declared prediction task.</p>')
+    development = research.get("development", {}).get("summary", {})
+    final_summary = (final or {}).get("summary", {})
+    rows = [[model, metrics.get("macro_f1_mean"), final_summary.get(model, {}).get("macro_f1_mean"), final_summary.get(model, {}).get("balanced_accuracy_mean"), final_summary.get(model, {}).get("date_count")]
+            for model, metrics in development.items()]
+    if rows:
+        parts.append(_table(["Model", "Development macro F1", "Final macro F1", "Final balanced accuracy", "Final dates"], rows, "Date-mean predictive scores"))
+    parts.append('<p class="muted">Scores range from 0 to 1; higher is better. Macro F1 gives each target class equal weight. Both development and final columns average per-date scores. History-only uses past midpoint changes and volatility; book models also use spread, depth and imbalance.</p>')
+    warnings = research.get("warnings", [])
+    if warnings:
+        parts.append('<details><summary>Model and research warnings ('+str(len(warnings))+')</summary><ul>'+''.join('<li>'+escape(str(item))+'</li>' for item in warnings)+'</ul></details>')
+    return ''.join(parts)
+
+
 def write_report(result: dict[str, Any], output: str | Path) -> dict[str, str]:
     target = Path(output)
     target.mkdir(parents=True, exist_ok=True)
@@ -37,9 +78,9 @@ def write_report(result: dict[str, Any], output: str | Path) -> dict[str, str]:
     for scenario, models in result.get("simulations", {}).items():
         for model, record in models.items():
             metrics = record["aggregate"]
-            rows.append([scenario, model, metrics.get("net_pnl_quote", metrics.get("net_pnl")),
-                         metrics.get("gross_pnl_quote", metrics.get("gross_pnl")),
-                         metrics.get("fees_quote", metrics.get("fees")),
+            rows.append([scenario, model, _money(metrics.get("net_pnl_quote", metrics.get("net_pnl"))),
+                         _money(metrics.get("gross_pnl_quote", metrics.get("gross_pnl"))),
+                         _money(metrics.get("fees_quote", metrics.get("fees"))),
                          metrics.get("fill_count", metrics.get("fills")),
                          metrics.get("unresolved_position_segments")])
     simulation_table = _table(["Scenario", "Signal", "Net P&L (USD)", "Gross P&L (USD)", "Fees (USD)", "Fills", "Unresolved segments"], rows, "Independent-segment simulation totals") if rows else '<p>No execution results in this development-only artifact.</p>'
@@ -49,7 +90,7 @@ def write_report(result: dict[str, Any], output: str | Path) -> dict[str, str]:
 :root{{color-scheme:light;--ink:#19392d;--muted:#456355;--line:#d4dfd7}}*{{box-sizing:border-box}}body{{margin:0;background:#f4f6f1;color:var(--ink);font:16px/1.65 "Segoe UI",Arial,sans-serif}}header{{background:#18372b;color:#f3f8ec;padding:30px max(20px,calc((100vw - 1150px)/2));overflow-wrap:anywhere}}main{{max-width:1190px;margin:auto;padding:24px 20px}}section{{background:white;border:1px solid var(--line);border-radius:10px;padding:24px;margin-bottom:22px;min-width:0}}h1{{font:38px/1.2 Georgia,serif;max-width:850px}}h2{{font-size:24px;margin:0 0 14px}}h3{{font-size:19px}}a{{color:#246344;text-underline-offset:3px}}header a{{color:#d2ef9a}}nav{{display:flex;gap:18px;flex-wrap:wrap}}.banner{{font-weight:700;letter-spacing:.06em;font-size:14px;color:#d2ef9a}}.lead{{font-size:18px}}.table{{overflow:auto;max-width:100%;border:1px solid var(--line);border-radius:6px}}table{{border-collapse:collapse;min-width:780px;width:100%;font-size:15px}}caption{{text-align:left;padding:14px;font-weight:600}}th,td{{padding:11px 14px;border-top:1px solid var(--line);text-align:left;vertical-align:top}}th{{background:#edf3e6}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5ef;padding:16px;max-height:500px;overflow:auto;font-size:14px}}details{{margin:15px 0}}summary{{cursor:pointer;font-weight:600}}:focus-visible{{outline:3px solid #518635;outline-offset:3px}}.muted{{color:var(--muted)}}li{{margin:8px 0}}code,.identity{{overflow-wrap:anywhere}}@media(max-width:500px){{h1{{font-size:30px}}section{{padding:18px}}main{{padding:18px 12px}}}}
 </style></head><body><header><div class="banner">{banner}</div><h1>From order-book evidence to explicit simulation assumptions</h1><p class="identity">{escape(result.get('experiment_id', 'Development planning'))}</p><nav aria-label="Report sections"><a href="#research">Research</a><a href="#execution">Execution</a><a href="#limits">Limits</a><a href="#reproduce">Reproduce</a></nav></header><main>
 <section><h2>How to read this report</h2><p class="lead">Prediction quality, hypothetical trading performance and software correctness are separate assessments.</p><p>Read the research decision first, compare all declared execution scenarios, then inspect the assumptions and provenance. A positive classification comparison does not establish profitable trading.</p><p><a href="experiment.json">Machine-readable aggregate evidence</a> · <a href="report.md">Plain-text report</a></p></section>
-<section id="research"><h2>Research comparison</h2><p>Primary: book-feature logistic regression versus price-history-only logistic regression. Secondary: boosted trees versus book-feature logistic regression. The practical improvement threshold is declared before final evaluation.</p>{_details('Research decisions, uncertainty and model metrics', research)}{_details('Development-only precision plan', research.get('precision_plan', {}))}</section>
+<section id="research"><h2>Research comparison</h2><p>Primary: book-feature logistic regression versus price-history-only logistic regression. Secondary: boosted trees versus book-feature logistic regression. The practical improvement threshold is declared before final evaluation.</p>{_research_overview(research)}{_details('Research decisions, uncertainty and model metrics', research)}{_details('Development-only precision plan', research.get('precision_plan', {}))}</section>
 <section id="execution"><h2>Hypothetical execution</h2><p>Long/flat, unlevered spot; marketable IOC orders execute only on later observed books. Fees, adverse slippage and action delays are research assumptions. Queue position, market impact and exchange-realistic fills are not established.</p>{simulation_table}<p class="muted">Totals sum independent segment trials with capital reset. Unclosed inventory is marked at the segment’s observed best bid; it is not an executed liquidation. These totals are not a continuously investable equity curve.</p>{_details('Declared scenarios and accounting configuration', {'simulation': result.get('config', {}).get('simulation'), 'scenarios': result.get('config', {}).get('scenarios')})}{_details('Full aggregate execution metrics', result.get('simulations', {}))}</section>
 <section id="limits"><h2>What the evidence does and does not support</h2><ul>{''.join('<li>'+escape(str(x))+'</li>' for x in limitations)}</ul>{_details('External method adaptation, not numerical reproduction', result.get('replication', {}))}{_details('Coverage and validation evidence', result.get('coverage', {}))}</section>
 <section id="reproduce"><h2>Reproduce the evidence</h2><p>Use the locked Python environment and obtain your own checksum-matching data under the provider terms. Detailed historical signals, orders, fills, ledgers and models remain local.</p><pre tabindex="0">uv sync --frozen --extra dev\nuv run --offline python -m market_microstructure.extension reproduce --reference reports/extension/reference/experiment.json --raw-dir data/extension/raw --output artifacts/extension/reproduction</pre><p>The synthetic demo runs offline and requires no historical data. See the project README for the complete acquisition and experiment workflow.</p>{_details('Content identities and runtime provenance', {key: result.get(key) for key in ('protocol_identity', 'dataset_identity', 'source_identity', 'provenance', 'freeze')})}</section>

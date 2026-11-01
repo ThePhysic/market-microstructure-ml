@@ -22,6 +22,11 @@ def config():
     lambda c: c["publication"].update(signals=0),
     lambda c: c["research"]["final_dates"].reverse(),
     lambda c: c["scenarios"].append(deepcopy(c["scenarios"][0])),
+    lambda c: c["scenarios"][0].update(fee_bps="10000"),
+    lambda c: c["scenarios"][0].update(slippage_bps="10000"),
+    lambda c: c["simulation"].update(quantity_step="0.01"),
+    lambda c: c["research"].update(min_final_blocks=9),
+    lambda c: c["market"].update(price_tick="0.03"),
 ])
 def test_invalid_research_execution_or_distribution_contract_fails(config, mutation):
     mutation(config)
@@ -46,3 +51,12 @@ def test_registry_blocks_changed_contract_and_requires_explicit_reproduction(tmp
     freeze["source_identity"] = "changed"
     with pytest.raises(ValueError, match="different scientific"):
         register_evaluation(freeze, root=tmp_path, reproduction=True)
+
+
+@pytest.mark.parametrize("replacement", [["2023-01-01"], ["2023-01-01", "2023-02-01", "2023-03-01"]])
+def test_changed_final_date_selection_cannot_reuse_overlapping_consumed_dates(tmp_path, replacement):
+    original = {"final_dates": ["2023-01-01", "2023-02-01"], "protocol_identity": "p", "dataset_identity": "d", "source_identity": "s"}
+    register_evaluation(original, root=tmp_path)
+    changed = {**original, "final_dates": replacement, "protocol_identity": "changed"}
+    with pytest.raises(ValueError, match="Overlapping"):
+        register_evaluation(changed, root=tmp_path, reproduction=True)

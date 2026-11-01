@@ -58,6 +58,8 @@ def _worker(rows: int, mode: str):
 
 
 def benchmark(sizes: list[int], repeats: int, output: str | Path):
+    from .provenance import source_identity
+    source = source_identity()
     if not sizes or any(type(n) is not int or not 40 <= n <= 100000 for n in sizes) or len(set(sizes)) != len(sizes):
         raise ValueError("Benchmark sizes must be distinct integers in 40-100000")
     if type(repeats) is not int or not 1 <= repeats <= 10:
@@ -82,7 +84,10 @@ def benchmark(sizes: list[int], repeats: int, output: str | Path):
                 "median_wall_seconds": statistics.median(row["wall_seconds"] for row in group),
                 "maximum_peak_process_rss_bytes": max(row["peak_process_rss_bytes"] for row in group),
                 "ledger_sha256": group[0]["ledger_sha256"], "fill_count": group[0]["fill_count"]})
+    if source_identity()["identity"] != source["identity"]:
+        raise ValueError("Benchmark source changed during measurement")
     result = {"status": "PASS", "kind": "synthetic_performance_benchmark", "environment": environment_provenance(),
+              "source_identity": source["identity"], "provenance": source,
               "processor": platform.processor(), "seed": 42, "summary": summary, "measurements": records,
               "limitations": ["Input generation and import time excluded from engine wall time; native peak process memory includes them.",
                               "Frame and batch modes use identical pre-generated input and produce identical ledger hashes.",

@@ -62,6 +62,8 @@ def validate_config(value: Any) -> dict[str, Any]:
         raise ValueError("The reviewed extension supports Bitstamp BTCUSD spot only")
     _decimal(market["price_tick"], "price_tick")
     _decimal(market["quantity_step"], "quantity_step")
+    if Decimal(market["price_tick"]) != Decimal("0.01") or Decimal(market["quantity_step"]) != Decimal("0.00000001"):
+        raise ValueError("The reviewed spot data require the declared cent/base-quantity grids")
     data = value["data"]
     _keys(data, {"dates", "windows_seconds", "window_seconds", "gap_seconds", "max_total_compressed_bytes", "max_disk_bytes", "max_wall_seconds", "max_compressed_bytes_per_date", "max_decompressed_bytes_per_date", "minimum_window_states", "minimum_window_span_seconds", "maximum_window_edge_gap_seconds", "maximum_excluded_fraction"}, "data")
     dates = data["dates"]
@@ -113,6 +115,14 @@ def validate_config(value: Any) -> dict[str, Any]:
         _integer(simulation[key], key, 0, 86400*1000000)
     if simulation["quantity_step"] != market["quantity_step"] or simulation["price_tick"] != market["price_tick"] or Decimal(research["target_position"]) > Decimal(simulation["max_position"]):
         raise ValueError("Simulation grids/exposure disagree with the research contract")
+    if len(research["final_dates"]) // research["block_length_dates"] < research["min_final_blocks"]:
+        raise ValueError("Final dates must cover the declared minimum block count")
+    if research["practical_delta"] >= 1:
+        raise ValueError("practical_delta must be below one")
+    from .simulation import SimulationConfig
+    # Validate executable assumptions before any data loading, registry mutation
+    # or fitting. An invalid scenario must never consume reserved outcomes.
+    SimulationConfig(**simulation)
     if not isinstance(value["scenarios"], list) or not value["scenarios"]:
         raise ValueError("At least one execution scenario is required")
     names = []
@@ -124,6 +134,7 @@ def validate_config(value: Any) -> dict[str, Any]:
         _decimal(scenario["fee_bps"], "fee_bps", False)
         _decimal(scenario["slippage_bps"], "slippage_bps", False)
         _integer(scenario["latency_us"], "latency_us", 0, 86400*1000000)
+        SimulationConfig(**{**simulation, **{key: scenario[key] for key in ("fee_bps", "slippage_bps", "latency_us")}})
     if len(names) != len(set(names)):
         raise ValueError("Duplicate scenario names")
     expected_publication = {"historical_rows": False, "signals": False, "trade_ledgers": False, "fitted_models": False, "aggregate_results": True}

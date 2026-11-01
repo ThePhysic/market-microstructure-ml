@@ -40,3 +40,15 @@ jobs:
           UV_OFFLINE: "1"
           HTTP_PROXY: "http://127.0.0.1:9"
           HTTPS_PROXY: "http://127.0.0.1:9"
+      - name: Exercise the offline causal simulation extension
+        run: uv run --offline python -m market_microstructure.extension demo --rows-per-date 80 --output artifacts/ci-extension-demo
+        env:
+          UV_OFFLINE: "1"
+          HTTP_PROXY: "http://127.0.0.1:9"
+          HTTPS_PROXY: "http://127.0.0.1:9"
+      - name: Check repeated frame and batch simulation parity
+        run: uv run --offline python -m market_microstructure.extension benchmark --sizes 1000 --repeats 1 --output artifacts/ci-extension-benchmark
+        env:
+          UV_OFFLINE: "1"
+          HTTP_PROXY: "http://127.0.0.1:9"
+          HTTPS_PROXY: "http://127.0.0.1:9"
