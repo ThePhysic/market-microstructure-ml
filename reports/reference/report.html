@@ -1,0 +1,465 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>exp-13c5f0856ef3a87a · Micro / Lab research report</title><style>
+:root{--ink:#20362a;--muted:#4e6651;--line:#dce5d8;--green:#2e7250;--lime:#d5ef98;--paper:#f4f6f0;--mono:Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.75 "Segoe UI",Arial,sans-serif}
+a{color:#286342;text-underline-offset:3px}a:focus-visible,summary:focus-visible,.table-wrap:focus-visible,pre:focus-visible{outline:3px solid #34784f;outline-offset:3px}
+.skip{position:absolute;left:20px;top:-80px;z-index:20;background:var(--lime);padding:10px 16px}.skip:focus{top:12px}
+.sidebar{position:fixed;inset:0 auto 0 0;width:224px;overflow-y:auto;background:#19271f;color:#dfeadc;padding:32px 23px;display:flex;flex-direction:column}
+.brand{font-size:27px;font-weight:650;letter-spacing:-1.2px}.brand span{color:var(--lime)}.brand small{font:11px var(--mono);display:block;letter-spacing:1.2px;color:#a1b79c;margin-top:5px}
+.sidebar nav{display:grid;gap:8px;margin-top:42px}.sidebar nav a{font-size:14px;color:#c7d6c2;text-decoration:none;border-radius:6px;padding:10px 12px}.sidebar nav a:hover{background:#2b4030;color:var(--lime)}.sidebar nav a:focus-visible{outline-color:var(--lime)}
+.sidebar-note{margin-top:auto;padding-top:40px;color:#a6bda0;font-size:14px}.sidebar-note strong{display:block;font:23px Georgia,serif;color:#e1eadb;margin-bottom:10px}
+.workspace{margin-left:224px}.topbar{display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 38px;background:#fff;border-bottom:1px solid var(--line);font-size:14px}
+.topbar-links{display:flex;gap:11px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 14px;border:1px solid #ccd9c4;border-radius:6px;background:#fff;text-decoration:none;font-size:14px;color:#36582c}
+.button:hover{background:#edf3e6}.button.primary{background:#243f2b;color:#f2f6ed;border-color:#243f2b}.notice{padding:15px 38px;background:#e9f0e0;border-bottom:1px solid #ceddc0;color:#3d5e30;font-size:14px}.notice.synthetic{background:#fbf0d8;color:#75551e;border-color:#e6d3a9}.notice strong{margin-right:7px}
+main{max-width:1520px;margin:auto;padding:34px 38px;outline:none}section{scroll-margin-top:20px;margin-bottom:30px}.eyebrow{font:12px var(--mono);letter-spacing:1.5px;color:#526b45;text-transform:uppercase}
+h1{font:44px/1.15 Georgia,serif;letter-spacing:-1.1px;max-width:900px;margin:13px 0 18px}h2{font-size:24px;letter-spacing:-.5px;line-height:1.3;margin:0 0 13px}h3{font-size:17px;line-height:1.5;margin:18px 0 8px}p{margin:0 0 15px;max-width:980px}.intro{font-size:17px;color:#48633d;max-width:850px;line-height:1.8}.meta{display:flex;gap:12px 22px;flex-wrap:wrap;font:12px/1.8 var(--mono);color:#4c6840;overflow-wrap:anywhere;margin-bottom:24px}
+.reading-guide{border:1px solid #d6e1cc;border-radius:8px;background:#eef4e6;padding:21px 24px;margin:24px 0}.reading-guide h2{font-size:19px}.reading-guide ol{margin:10px 0 0;padding-left:23px}.reading-guide li{padding:4px 0;color:#455f38}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:24px 0}.metric-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:19px}.metric-card span{display:block;font-size:14px;color:#4a653e}.metric-card strong{display:block;font:31px/1.5 var(--mono);letter-spacing:-1px;color:#2e5030;overflow-wrap:anywhere}.metric-card p{font-size:14px;margin:3px 0 0;color:#58714b}
+.panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;margin:20px 0}.panel h2{font-size:22px}.panel h3:first-child{margin-top:0}.callout{background:#edf3e5;border-left:4px solid #82a464;border-radius:0 6px 6px 0;padding:18px 20px;margin:18px 0;color:#405e32}.callout.warning{background:#faf0dc;border-color:#c7a15b;color:#74571f}.callout p:last-child{margin-bottom:0}
+.table-wrap{overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:6px;scrollbar-width:thin;overscroll-behavior-x:contain}.table-wrap:focus-visible{outline-offset:-3px}table{border-collapse:collapse;width:100%;min-width:660px;font-size:14px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e6ece1;padding:12px 14px}th{background:#f1f5ec;color:#3c5d2f;font-weight:600;font-size:14px}td{color:#49623c}tbody tr:last-child td{border-bottom:0}.scroll-hint{font-size:14px;color:#566e47;margin:15px 0 9px}.wide table{min-width:960px}.hash{font:12px/1.7 var(--mono);overflow-wrap:anywhere;max-width:230px;display:block}.source-url{overflow-wrap:anywhere;min-width:240px;display:block}
+.legend{font-size:14px;color:#49643c;background:#f2f6ed;padding:16px 18px;border-radius:6px;margin:18px 0}.legend p:last-child{margin-bottom:0}.warning-list{padding-left:23px;color:#70552c;overflow-wrap:anywhere}.warning-list li{margin:7px 0}.empty{padding:16px;background:#f4f5f0;border:1px dashed #cfd8c7;color:#627455;border-radius:6px}
+details{border:1px solid var(--line);border-radius:7px;background:#fff;margin:18px 0}summary{cursor:pointer;min-height:46px;padding:13px 17px;font-size:15px;font-weight:600;color:#3b602d}details>.details-body{padding:0 18px 18px}pre{background:#1e3023;color:#deebd1;padding:20px;border-radius:6px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:440px;overflow:auto;font:13px/1.8 var(--mono);max-width:100%}code{font-family:var(--mono);font-size:.92em}
+.note{color:#516b43;font-size:14px}.research-text{white-space:pre-line}.footer{padding:12px 0 5px;font:12px/1.8 var(--mono);letter-spacing:.4px;color:#5d7350;border-top:1px solid var(--line)}
+@media(max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:39px}}
+@media(max-width:900px){.sidebar{position:static;width:auto;display:block;padding:22px 24px}.sidebar nav{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:20px}.sidebar nav a{padding:8px 10px}.sidebar-note{display:none}.workspace{margin-left:0}.topbar{padding:18px 24px;flex-wrap:wrap}.notice{padding:15px 24px}main{padding:27px 24px}}
+@media(max-width:500px){.sidebar{padding:20px}.sidebar nav{gap:5px}.sidebar nav a{font-size:14px}.brand{font-size:25px}.topbar{padding:17px 20px}.topbar-links{width:100%}.topbar-links .button{flex:1 1 140px}.notice{padding:15px 20px}main{padding:25px 20px}h1{font-size:35px;line-height:1.18}h2{font-size:22px}.intro{font-size:16px}.panel{padding:20px 17px}.cards{gap:12px}.metric-card{padding:17px 13px}.metric-card strong{font-size:26px}.metric-card p,.metric-card span{font-size:14px}.reading-guide{padding:19px 17px}.callout{padding:17px 15px}.meta{gap:8px 14px}.hash{font-size:12px}pre{padding:17px;font-size:13px}.scroll-hint{font-size:14px}}
+@media(max-width:360px){.cards{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.sidebar,.topbar-links,.skip,.scroll-hint{display:none}.workspace{margin-left:0}main{padding:0}.topbar,.notice{padding-left:0;padding-right:0}.panel{break-inside:avoid}.table-wrap{overflow:visible}table,.wide table{min-width:0;font-size:10px}th,td{padding:6px;font-size:10px}.cards{grid-template-columns:repeat(4,1fr)}pre{max-height:none}}
+</style></head><body><a class="skip" href="#main">Skip to research report</a><aside class="sidebar" aria-label="Report navigation"><div class="brand">micro<span> / </span>lab<small>RESEARCH EVIDENCE</small></div><nav aria-label="Report sections"><a href="#overview">Overview</a><a href="#models">Model results</a><a href="#validation">Time-split audit</a><a href="#quality">Data quality</a><a href="#research-note">Research note</a><a href="#provenance">Provenance</a></nav><div class="sidebar-note"><strong>Built for scrutiny.</strong>Every result should have a trail you can follow.</div></aside><div class="workspace"><header class="topbar"><span>Market microstructure / Research report</span><div class="topbar-links"><a class="button" href="#reading-guide">How to read this</a><a class="button" href="report.md">Technical Markdown</a><a class="button primary" href="experiment.json">Open JSON evidence</a></div></header><div class="notice"><strong>REAL HISTORICAL DATA — BOUNDED EXCERPTS</strong> Historical classification scores do not establish trading profitability.</div><main id="main" tabindex="-1"><section id="overview"><div class="eyebrow">A reproducible research process</div><h1>Order-book prediction,<br>with an evidence trail.</h1><p class="intro">Can orders waiting to buy and sell help predict whether the mid-price moves down, stays within a no-change band or moves up, 10 observed book states later? This offline report compares simple methods and records how the evidence was checked.</p><p class="note">An order book lists waiting buy and sell orders; a book state is one snapshot of that list. Mid-price means halfway between the best buy and sell prices. “Unchanged” includes small moves inside the frozen target threshold, not only identical prices. Exact threshold and tick-size settings appear in the configuration record. This report places no orders.</p><div class="meta"><span>EXPERIMENT exp-13c5f0856ef3a87a</span><span>CREATED 2026-11-01T06:40:40.462477+00:00</span></div><div class="reading-guide" id="reading-guide"><h2>Start here: three things to check</h2><ol><li><a href="#models">Compare the methods.</a> Read earlier-date results separately from the final later-date holdout.</li><li><a href="#validation">Inspect the time boundaries.</a> Inputs must be available when each prediction is made.</li><li><a href="#research-note">Read the conclusion and limitations.</a> A negative or uncertain result is a valid outcome.</li></ol></div><div class="cards"><div class="metric-card"><span>Observed dates</span><strong>12</strong><p>Separate observed excerpts, not a continuous history.</p></div><div class="metric-card"><span>Eligible labeled samples</span><strong>239,640</strong><p>Correlated book updates are not independent evidence.</p></div><div class="metric-card"><span>Development test dates</span><strong>7</strong><p>Earlier-period evaluation; settings fixed before final testing.</p></div><div class="metric-card"><span>Final holdout dates</span><strong>2</strong><p>Later dates reserved outside model selection.</p></div></div><div class="callout"><strong>What the data covers</strong><p>This record contains 12 observed dates and 7 development evaluation dates. The intended real-data study uses noncontiguous opening excerpts from month-start files, not complete trading days or a continuous backtest. Many correlated updates do not create many independent dates.</p></div></section><section id="models"><div class="eyebrow">Comparison / same eligible samples</div><h2>How did the methods compare?</h2><div class="legend"><p><strong>Both scores range from 0 to 1; higher is better.</strong> Macro F1 balances false alarms and missed outcomes, giving down, unchanged and up equal weight. Balanced accuracy averages the fraction correctly recognized in each actual class present in that evaluation period. Missing classes are disclosed in warnings.</p><p>The majority baseline always predicts the most common training outcome. Logistic regression is the simple linear comparison. Small boosted trees model more flexible relationships. A score improvement is not a return or profit estimate.</p></div><p class="scroll-hint">On a narrow screen, swipe this table sideways. With a keyboard, focus the table and use the left/right arrow keys.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Model score comparison"><table><thead><tr><th scope="col">Method</th><th scope="col">Development macro F1</th><th scope="col">Across-date SD</th><th scope="col">Development balanced accuracy</th><th scope="col">Final macro F1</th><th scope="col">Final balanced accuracy</th><th scope="col">Final sample count</th></tr></thead><tbody><tr><td>Simple majority baseline</td><td>0.327</td><td>0.003</td><td>0.333</td><td>0.272</td><td>0.333</td><td>39,940</td></tr><tr><td>Logistic regression</td><td>0.435</td><td>0.037</td><td>0.396</td><td>0.498</td><td>0.480</td><td>39,940</td></tr><tr><td>Small boosted trees</td><td>0.461</td><td>0.047</td><td>0.413</td><td>0.457</td><td>0.442</td><td>39,940</td></tr></tbody></table></div><p class="note">Development values are date-level means; SD is their descriptive standard deviation. Final values are the recorded scores on the reserved later dates. These are different summaries and should not be pooled into a single selection score.</p><details><summary>Inspect final results for each outcome class</summary><div class="details-body"><p class="scroll-hint">On a narrow screen, swipe this table sideways. With a keyboard, focus the table and use the left/right arrow keys.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Final holdout performance by outcome class"><table><thead><tr><th scope="col">Method</th><th scope="col">Actual class</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">F1</th><th scope="col">Actual sample count</th></tr></thead><tbody><tr><td>Simple majority baseline</td><td>down</td><td>0.000</td><td>0.000</td><td>0.000</td><td>6,465</td></tr><tr><td>Simple majority baseline</td><td>unchanged</td><td>0.689</td><td>1.000</td><td>0.816</td><td>27,535</td></tr><tr><td>Simple majority baseline</td><td>up</td><td>0.000</td><td>0.000</td><td>0.000</td><td>5,940</td></tr><tr><td>Logistic regression</td><td>down</td><td>0.483</td><td>0.210</td><td>0.292</td><td>6,465</td></tr><tr><td>Logistic regression</td><td>unchanged</td><td>0.771</td><td>0.919</td><td>0.838</td><td>27,535</td></tr><tr><td>Logistic regression</td><td>up</td><td>0.429</td><td>0.313</td><td>0.362</td><td>5,940</td></tr><tr><td>Small boosted trees</td><td>down</td><td>0.473</td><td>0.228</td><td>0.308</td><td>6,465</td></tr><tr><td>Small boosted trees</td><td>unchanged</td><td>0.746</td><td>0.944</td><td>0.833</td><td>27,535</td></tr><tr><td>Small boosted trees</td><td>up</td><td>0.461</td><td>0.154</td><td>0.230</td><td>5,940</td></tr></tbody></table></div><p class="note">Precision asks how often predictions of a class were correct. Recall asks how many actual examples of that class were recognized. Support is the actual example count.</p></div></details></section><section id="validation"><div class="eyebrow">Causal inputs / chronological evaluation</div><h2>Was future information kept out?</h2><p>Each development fold trains on earlier dates and evaluates on a later date. “Purged” samples are removed because their future target interval reaches an evaluation boundary. The final holdout is reserved outside model selection. Overlapping training sets do not make their evaluation dates extra independent observations.</p><p class="scroll-hint">On a narrow screen, swipe this table sideways. With a keyboard, focus the table and use the left/right arrow keys.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Chronological training and evaluation splits"><table><thead><tr><th scope="col">Split</th><th scope="col">Purpose</th><th scope="col">Training dates</th><th scope="col">Evaluation dates</th><th scope="col">Training samples</th><th scope="col">Evaluation samples</th><th scope="col">Purged</th></tr></thead><tbody><tr><td>walk_forward_01</td><td>Development</td><td>2020-01-01, 2020-02-01, 2020-03-01</td><td>2020-04-01</td><td>59,910</td><td>19,970</td><td>0</td></tr><tr><td>walk_forward_02</td><td>Development</td><td>2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01</td><td>2020-05-01</td><td>79,880</td><td>19,970</td><td>0</td></tr><tr><td>walk_forward_03</td><td>Development</td><td>2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-05-01</td><td>2020-06-01</td><td>99,850</td><td>19,970</td><td>0</td></tr><tr><td>walk_forward_04</td><td>Development</td><td>2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01</td><td>2020-07-01</td><td>119,820</td><td>19,970</td><td>0</td></tr><tr><td>walk_forward_05</td><td>Development</td><td>2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01</td><td>2020-08-01</td><td>139,790</td><td>19,970</td><td>0</td></tr><tr><td>walk_forward_06</td><td>Development</td><td>2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01</td><td>2020-09-01</td><td>159,760</td><td>19,970</td><td>0</td></tr><tr><td>walk_forward_07</td><td>Development</td><td>2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-09-01</td><td>2020-10-01</td><td>179,730</td><td>19,970</td><td>0</td></tr><tr><td>final_holdout</td><td>Final holdout</td><td>2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-09-01, 2020-10-01</td><td>2020-11-01, 2020-12-01</td><td>199,700</td><td>39,940</td><td>0</td></tr></tbody></table></div><details><summary>Inspect the recorded split audit</summary><div class="details-body"><pre tabindex="0" aria-label="Recorded time-split audit">{
+  &quot;calendar_gaps&quot;: &quot;Unobserved dates are gaps, not a continuous backtest.&quot;,
+  &quot;development_dates&quot;: [
+    &quot;2020-01-01&quot;,
+    &quot;2020-02-01&quot;,
+    &quot;2020-03-01&quot;,
+    &quot;2020-04-01&quot;,
+    &quot;2020-05-01&quot;,
+    &quot;2020-06-01&quot;,
+    &quot;2020-07-01&quot;,
+    &quot;2020-08-01&quot;,
+    &quot;2020-09-01&quot;,
+    &quot;2020-10-01&quot;
+  ],
+  &quot;development_fold_count&quot;: 7,
+  &quot;final_holdout&quot;: {
+    &quot;candidate_train_rows&quot;: 199700,
+    &quot;evaluation_boundary_us&quot;: 1604188800360872,
+    &quot;first_evaluation_order&quot;: 200021,
+    &quot;max_train_label_end_order&quot;: 200000,
+    &quot;max_train_label_end_us&quot;: 1601511375598567,
+    &quot;name&quot;: &quot;final_holdout&quot;,
+    &quot;purged_count&quot;: 0,
+    &quot;purged_feature_orders&quot;: [],
+    &quot;requested_train_dates&quot;: [
+      &quot;2020-01-01&quot;,
+      &quot;2020-02-01&quot;,
+      &quot;2020-03-01&quot;,
+      &quot;2020-04-01&quot;,
+      &quot;2020-05-01&quot;,
+      &quot;2020-06-01&quot;,
+      &quot;2020-07-01&quot;,
+      &quot;2020-08-01&quot;,
+      &quot;2020-09-01&quot;,
+      &quot;2020-10-01&quot;
+    ],
+    &quot;strict_source_order_boundary&quot;: true,
+    &quot;strict_time_boundary&quot;: true,
+    &quot;test_dates&quot;: [
+      &quot;2020-11-01&quot;,
+      &quot;2020-12-01&quot;
+    ],
+    &quot;test_feature_order_sha256&quot;: &quot;d798ee591203cf7413370d594afdb8009f724b3520facb0fede10b11b9f2805e&quot;,
+    &quot;test_index_sha256&quot;: &quot;16be02457ae77c59d73345bfe18a09e7844eaae8ed166e25d9a3a8669c22a1d4&quot;,
+    &quot;test_rows&quot;: 39940,
+    &quot;train_dates&quot;: [
+      &quot;2020-01-01&quot;,
+      &quot;2020-02-01&quot;,
+      &quot;2020-03-01&quot;,
+      &quot;2020-04-01&quot;,
+      &quot;2020-05-01&quot;,
+      &quot;2020-06-01&quot;,
+      &quot;2020-07-01&quot;,
+      &quot;2020-08-01&quot;,
+      &quot;2020-09-01&quot;,
+      &quot;2020-10-01&quot;
+    ],
+    &quot;train_feature_order_sha256&quot;: &quot;164450e64ab883eb1d16a7224d112b5dcdb2e85e46a776fe0d0e72a1625b18e5&quot;,
+    &quot;train_index_sha256&quot;: &quot;93fe0e971c13009696031df4c7e5a651be371b12540b09fea086a67bdf377d7d&quot;,
+    &quot;train_rows&quot;: 199700
+  },
+  &quot;final_holdout_excluded_from_development&quot;: true,
+  &quot;final_holdout_purged_rows&quot;: 0,
+  &quot;folds&quot;: [
+    {
+      &quot;candidate_train_rows&quot;: 59910,
+      &quot;evaluation_boundary_us&quot;: 1585699201175068,
+      &quot;first_evaluation_order&quot;: 60021,
+      &quot;max_train_label_end_order&quot;: 60000,
+      &quot;max_train_label_end_us&quot;: 1583021099947169,
+      &quot;name&quot;: &quot;walk_forward_01&quot;,
+      &quot;purged_count&quot;: 0,
+      &quot;purged_feature_orders&quot;: [],
+      &quot;requested_train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;
+      ],
+      &quot;strict_source_order_boundary&quot;: true,
+      &quot;strict_time_boundary&quot;: true,
+      &quot;test_dates&quot;: [
+        &quot;2020-04-01&quot;
+      ],
+      &quot;test_feature_order_sha256&quot;: &quot;11cabd8b97f24419f995ddefa48b2aaabe97fc824cacf1c37516b064162ca212&quot;,
+      &quot;test_index_sha256&quot;: &quot;57d2b7ee22eb7cda97ba05e9125dad89f621fa4aad142bb4ad7984f70f63bd43&quot;,
+      &quot;test_rows&quot;: 19970,
+      &quot;train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;
+      ],
+      &quot;train_feature_order_sha256&quot;: &quot;f246a3f1b780705e2c7eac9f93b83015d644666ec4a0e52712cbb89ae32ce668&quot;,
+      &quot;train_index_sha256&quot;: &quot;1e591b1d8ace5c3b9f3af8d347dc161f278f677a90f35113fa7d839384f9cc4e&quot;,
+      &quot;train_rows&quot;: 59910
+    },
+    {
+      &quot;candidate_train_rows&quot;: 79880,
+      &quot;evaluation_boundary_us&quot;: 1588291200384676,
+      &quot;first_evaluation_order&quot;: 80021,
+      &quot;max_train_label_end_order&quot;: 80000,
+      &quot;max_train_label_end_us&quot;: 1585699963201886,
+      &quot;name&quot;: &quot;walk_forward_02&quot;,
+      &quot;purged_count&quot;: 0,
+      &quot;purged_feature_orders&quot;: [],
+      &quot;requested_train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;
+      ],
+      &quot;strict_source_order_boundary&quot;: true,
+      &quot;strict_time_boundary&quot;: true,
+      &quot;test_dates&quot;: [
+        &quot;2020-05-01&quot;
+      ],
+      &quot;test_feature_order_sha256&quot;: &quot;1f686a51e87366af70fb58cdf762662eb1ec7365bf1032167b0fb07793dabf7c&quot;,
+      &quot;test_index_sha256&quot;: &quot;ba59aac3738a6f5d1a1925c1494f95965f64692cf8e037e9514a0b623ab5d5e6&quot;,
+      &quot;test_rows&quot;: 19970,
+      &quot;train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;
+      ],
+      &quot;train_feature_order_sha256&quot;: &quot;46122d74cb429742e562574f22405d3a8bf580707db4f76c40375dce98e0e22c&quot;,
+      &quot;train_index_sha256&quot;: &quot;37b5e00525b6c3fdfc4af29856a47c15ebd9ffa998a7c48a8a59791c83badcbc&quot;,
+      &quot;train_rows&quot;: 79880
+    },
+    {
+      &quot;candidate_train_rows&quot;: 99850,
+      &quot;evaluation_boundary_us&quot;: 1590969600316691,
+      &quot;first_evaluation_order&quot;: 100021,
+      &quot;max_train_label_end_order&quot;: 100000,
+      &quot;max_train_label_end_us&quot;: 1588291611104079,
+      &quot;name&quot;: &quot;walk_forward_03&quot;,
+      &quot;purged_count&quot;: 0,
+      &quot;purged_feature_orders&quot;: [],
+      &quot;requested_train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;
+      ],
+      &quot;strict_source_order_boundary&quot;: true,
+      &quot;strict_time_boundary&quot;: true,
+      &quot;test_dates&quot;: [
+        &quot;2020-06-01&quot;
+      ],
+      &quot;test_feature_order_sha256&quot;: &quot;b3e75f2105d6784902e2cd80c0ed98bfba6a80ce0ff0518a1df29e30afcf2b5b&quot;,
+      &quot;test_index_sha256&quot;: &quot;d828920f6e5b9ca04e4cddfaa934186b87b64012fd7de259379f0133de48351c&quot;,
+      &quot;test_rows&quot;: 19970,
+      &quot;train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;
+      ],
+      &quot;train_feature_order_sha256&quot;: &quot;efbeea7783262c0b50529a8a255dc26c80881d3960c2a1b963992d3e91e57707&quot;,
+      &quot;train_index_sha256&quot;: &quot;e0d22c54c6dfd18310075855e4e469572e1f33070bdd9412aba8635ef5e1496b&quot;,
+      &quot;train_rows&quot;: 99850
+    },
+    {
+      &quot;candidate_train_rows&quot;: 119820,
+      &quot;evaluation_boundary_us&quot;: 1593561602781037,
+      &quot;first_evaluation_order&quot;: 120021,
+      &quot;max_train_label_end_order&quot;: 120000,
+      &quot;max_train_label_end_us&quot;: 1590970048443851,
+      &quot;name&quot;: &quot;walk_forward_04&quot;,
+      &quot;purged_count&quot;: 0,
+      &quot;purged_feature_orders&quot;: [],
+      &quot;requested_train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;
+      ],
+      &quot;strict_source_order_boundary&quot;: true,
+      &quot;strict_time_boundary&quot;: true,
+      &quot;test_dates&quot;: [
+        &quot;2020-07-01&quot;
+      ],
+      &quot;test_feature_order_sha256&quot;: &quot;6c685797a1ecb7a229b16939d4b4f72548b12a1ebecbae0ff3d63caa3615718c&quot;,
+      &quot;test_index_sha256&quot;: &quot;e9fbca4df531ec874b83e50663af740e0b04cae628f72833815478c0c5bf908c&quot;,
+      &quot;test_rows&quot;: 19970,
+      &quot;train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;
+      ],
+      &quot;train_feature_order_sha256&quot;: &quot;4e652b9a74aa9ea3b9506eae08d34268274e6702a349acc4c5b804fd39c3ef22&quot;,
+      &quot;train_index_sha256&quot;: &quot;076738baa07ce0f72570cf8e1c23be453a035965b964d89723acda94bae3a655&quot;,
+      &quot;train_rows&quot;: 119820
+    },
+    {
+      &quot;candidate_train_rows&quot;: 139790,
+      &quot;evaluation_boundary_us&quot;: 1596240001815783,
+      &quot;first_evaluation_order&quot;: 140021,
+      &quot;max_train_label_end_order&quot;: 140000,
+      &quot;max_train_label_end_us&quot;: 1593562239031313,
+      &quot;name&quot;: &quot;walk_forward_05&quot;,
+      &quot;purged_count&quot;: 0,
+      &quot;purged_feature_orders&quot;: [],
+      &quot;requested_train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;,
+        &quot;2020-07-01&quot;
+      ],
+      &quot;strict_source_order_boundary&quot;: true,
+      &quot;strict_time_boundary&quot;: true,
+      &quot;test_dates&quot;: [
+        &quot;2020-08-01&quot;
+      ],
+      &quot;test_feature_order_sha256&quot;: &quot;b8d8a99f9050835139bb716594a435cb48091ff2c49b361b9919d9253c050b47&quot;,
+      &quot;test_index_sha256&quot;: &quot;32611752c69160d7f5fdbff4eecc4c5e65d97f1680fdd4b6c0663f484a0e5e47&quot;,
+      &quot;test_rows&quot;: 19970,
+      &quot;train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;,
+        &quot;2020-07-01&quot;
+      ],
+      &quot;train_feature_order_sha256&quot;: &quot;50b06dd57ec3a177c0d2dc5db18c09e09043eb77ce6bd65fd16cb30145eacd90&quot;,
+      &quot;train_index_sha256&quot;: &quot;5cfda1f0678d29aec2049cc30c72a48060f370f205c31654d430bd2d7e8da05d&quot;,
+      &quot;train_rows&quot;: 139790
+    },
+    {
+      &quot;candidate_train_rows&quot;: 159760,
+      &quot;evaluation_boundary_us&quot;: 1598918400909485,
+      &quot;first_evaluation_order&quot;: 160021,
+      &quot;max_train_label_end_order&quot;: 160000,
+      &quot;max_train_label_end_us&quot;: 1596240580453204,
+      &quot;name&quot;: &quot;walk_forward_06&quot;,
+      &quot;purged_count&quot;: 0,
+      &quot;purged_feature_orders&quot;: [],
+      &quot;requested_train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;,
+        &quot;2020-07-01&quot;,
+        &quot;2020-08-01&quot;
+      ],
+      &quot;strict_source_order_boundary&quot;: true,
+      &quot;strict_time_boundary&quot;: true,
+      &quot;test_dates&quot;: [
+        &quot;2020-09-01&quot;
+      ],
+      &quot;test_feature_order_sha256&quot;: &quot;571142eb1cbe7fa906e00d576fbfaa21f7b4330fdfa8d52351da4b35ef5118d3&quot;,
+      &quot;test_index_sha256&quot;: &quot;2e3229193f6472371afaf2796b2594e5ccefcf3d9c70764d09969f89e5df2e00&quot;,
+      &quot;test_rows&quot;: 19970,
+      &quot;train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;,
+        &quot;2020-07-01&quot;,
+        &quot;2020-08-01&quot;
+      ],
+      &quot;train_feature_order_sha256&quot;: &quot;7f0b71e22af03dfe3a1bff8e959833470f4c1639e0308340550325cc6b65fd75&quot;,
+      &quot;train_index_sha256&quot;: &quot;32ee85d151281b87b939883a939fa1b8eebbf364d5bae9aa80346349b451ade9&quot;,
+      &quot;train_rows&quot;: 159760
+    },
+    {
+      &quot;candidate_train_rows&quot;: 179730,
+      &quot;evaluation_boundary_us&quot;: 1601510400739214,
+      &quot;first_evaluation_order&quot;: 180021,
+      &quot;max_train_label_end_order&quot;: 180000,
+      &quot;max_train_label_end_us&quot;: 1598919215463544,
+      &quot;name&quot;: &quot;walk_forward_07&quot;,
+      &quot;purged_count&quot;: 0,
+      &quot;purged_feature_orders&quot;: [],
+      &quot;requested_train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;,
+        &quot;2020-07-01&quot;,
+        &quot;2020-08-01&quot;,
+        &quot;2020-09-01&quot;
+      ],
+      &quot;strict_source_order_boundary&quot;: true,
+      &quot;strict_time_boundary&quot;: true,
+      &quot;test_dates&quot;: [
+        &quot;2020-10-01&quot;
+      ],
+      &quot;test_feature_order_sha256&quot;: &quot;300204611cffa6c483166af52599ab249ed0d7ef968575d1ecd0c8830f445d61&quot;,
+      &quot;test_index_sha256&quot;: &quot;647a904f78d6888dd2e7c64f9ded6571aab935aeb71d558a794618954f4a6e22&quot;,
+      &quot;test_rows&quot;: 19970,
+      &quot;train_dates&quot;: [
+        &quot;2020-01-01&quot;,
+        &quot;2020-02-01&quot;,
+        &quot;2020-03-01&quot;,
+        &quot;2020-04-01&quot;,
+        &quot;2020-05-01&quot;,
+        &quot;2020-06-01&quot;,
+        &quot;2020-07-01&quot;,
+        &quot;2020-08-01&quot;,
+        &quot;2020-09-01&quot;
+      ],
+      &quot;train_feature_order_sha256&quot;: &quot;d769f5aeceea885b475151b076d7ed869e47809b0df4318f3f7c728b77d63856&quot;,
+      &quot;train_index_sha256&quot;: &quot;9df86d7c5852b718e361e8a14933a8351dd7e1a3e552b8d267a023d1bb278317&quot;,
+      &quot;train_rows&quot;: 179730
+    }
+  ],
+  &quot;holdout_dates&quot;: [
+    &quot;2020-11-01&quot;,
+    &quot;2020-12-01&quot;
+  ],
+  &quot;observed_dates&quot;: [
+    &quot;2020-01-01&quot;,
+    &quot;2020-02-01&quot;,
+    &quot;2020-03-01&quot;,
+    &quot;2020-04-01&quot;,
+    &quot;2020-05-01&quot;,
+    &quot;2020-06-01&quot;,
+    &quot;2020-07-01&quot;,
+    &quot;2020-08-01&quot;,
+    &quot;2020-09-01&quot;,
+    &quot;2020-10-01&quot;,
+    &quot;2020-11-01&quot;,
+    &quot;2020-12-01&quot;
+  ],
+  &quot;purge_rule&quot;: &quot;Keep a train row only if label_end_time &lt; earliest evaluation feature_cutoff_time.&quot;,
+  &quot;strategy&quot;: &quot;expanding observed-date walk-forward; one validation date per development fold&quot;,
+  &quot;timestamp_tie_policy&quot;: &quot;Conservative purge at equal endpoint/cutoff times; stable source order.&quot;,
+  &quot;total_development_purged_rows&quot;: 0
+}</pre></div></details><div class="panel"><h3>Uncertainty belongs to dates, not individual updates</h3><p>The paired comparisons resample whole evaluation-date scores. Intervals are exploratory and assume the dates are exchangeable independent units. Fewer than three units produces no interval; a small number of dates remains a substantial limitation.</p><p class="scroll-hint">On a narrow screen, swipe this table sideways. With a keyboard, focus the table and use the left/right arrow keys.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Paired development-date comparisons"><table><thead><tr><th scope="col">Comparison (A minus B)</th><th scope="col">Evaluation dates</th><th scope="col">Mean macro F1 difference</th><th scope="col">Exploratory macro F1 interval</th><th scope="col">Status</th></tr></thead><tbody><tr><td>boosted minus logistic</td><td>7</td><td>0.026</td><td>95% [0.015, 0.039]</td><td>exploratory</td></tr><tr><td>boosted minus majority</td><td>7</td><td>0.134</td><td>95% [0.102, 0.166]</td><td>exploratory</td></tr></tbody></table></div></div><details><summary>Inspect predeclared development-only robustness checks</summary><div class="details-body"><p>These sensitivity checks use development periods only. They do not provide permission to retune against the final holdout.</p><p class="scroll-hint">On a narrow screen, swipe this table sideways. With a keyboard, focus the table and use the left/right arrow keys.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Development-only robustness checks"><table><thead><tr><th scope="col">Predeclared change</th><th scope="col">Method</th><th scope="col">Development macro F1</th><th scope="col">Development balanced accuracy</th></tr></thead><tbody><tr><td>remove imbalance</td><td>Simple majority baseline</td><td>0.327</td><td>0.333</td></tr><tr><td>remove imbalance</td><td>Logistic regression</td><td>0.432</td><td>0.395</td></tr><tr><td>remove imbalance</td><td>Small boosted trees</td><td>0.462</td><td>0.414</td></tr><tr><td>horizon 20</td><td>Simple majority baseline</td><td>0.320</td><td>0.333</td></tr><tr><td>horizon 20</td><td>Logistic regression</td><td>0.398</td><td>0.377</td></tr><tr><td>horizon 20</td><td>Small boosted trees</td><td>0.411</td><td>0.384</td></tr></tbody></table></div></div></details></section><section id="quality"><div class="eyebrow">Data integrity / exclusions</div><h2>What was retained or excluded?</h2><p>Counts below describe the supplied excerpts and feature construction. Vendor snapshots were reconstructed upstream; this project does not claim to have reconstructed the exchange book. Raw market records, individual predictions and model weights are not displayed here.</p><p class="scroll-hint">On a narrow screen, swipe this table sideways. With a keyboard, focus the table and use the left/right arrow keys.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Aggregate ingestion and feature quality"><table><thead><tr><th scope="col">Aggregate quality field</th><th scope="col">Recorded value</th></tr></thead><tbody><tr><td>ingestion.schema_version</td><td>1</td></tr><tr><td>ingestion.total_rows</td><td>240000</td></tr><tr><td>ingestion.retained_rows</td><td>240000</td></tr><tr><td>ingestion.excluded_rows</td><td>0</td></tr><tr><td>ingestion.counts.total_rows</td><td>240000</td></tr><tr><td>ingestion.counts.retained_rows</td><td>240000</td></tr><tr><td>ingestion.counts.tied_receive_timestamps</td><td>54</td></tr><tr><td>ingestion.segments</td><td>12</td></tr><tr><td>ingestion.timestamp_unit</td><td>microseconds since Unix epoch UTC</td></tr><tr><td>ingestion.availability_policy</td><td>local receipt timestamp; original source position breaks ties</td></tr><tr><td>ingestion.gap_seconds</td><td>30.0</td></tr><tr><td>features.input_rows</td><td>240000</td></tr><tr><td>features.retained_samples</td><td>239640</td></tr><tr><td>features.excluded_samples</td><td>360</td></tr><tr><td>features.segments</td><td>12</td></tr><tr><td>features.horizon_events</td><td>10</td></tr><tr><td>features.threshold_ticks</td><td>1.0</td></tr><tr><td>features.tick_size</td><td>0.5</td></tr><tr><td>features.trailing_window</td><td>20</td></tr><tr><td>features.zero_l1_denominator_states</td><td>0</td></tr><tr><td>features.zero_depth_denominator_states</td><td>0</td></tr><tr><td>features.zero_denominator_policy</td><td>Use zero imbalance when both opposing sizes/depths are zero.</td></tr><tr><td>features.information_time</td><td>receive_time_us; ties retain ascending source_order</td></tr><tr><td>features.volatility_definition</td><td>Population std(ddof=0) of the last trailing_window one-state mid-price changes in ticks.</td></tr></tbody></table></div><div class="panel"><h3>Warnings and qualifications</h3><ul class="warning-list"><li>Only noncontiguous monthly opening excerpts are observed; these are not full trading days.</li><li>Millions of correlated rows are not millions of independent experimental observations.</li><li>Date bootstrap intervals are exploratory; overlapping training windows and few dates limit inference.</li><li>Vendor snapshots were reconstructed and may have crossed levels removed upstream.</li><li>CSV disconnect events are unavailable; a 30-second gap rule is only a discontinuity heuristic.</li><li>Order sizes are vendor-native USD notional for this inverse instrument, not BTC quantities.</li><li>Prediction scores do not establish executable, fee-adjusted trading profitability.</li><li>No fitted models, row-level predictions or historical records are redistributed.</li><li>Exploratory session/date bootstrap: assumes exchangeable independent evaluation units; overlapping training folds do not create independent observations.</li><li>Fewer than 10 session/date units; the percentile interval may be unstable and must not be read as proof of generalization.</li><li>primary/walk_forward_01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_01/2020-04-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_02/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_02/2020-05-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_03/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_03/2020-06-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_04/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_04/2020-07-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_05/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_05/2020-08-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_06/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_06/2020-09-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_07/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>primary/walk_forward_07/2020-10-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_01/2020-04-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_02/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_02/2020-05-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_03/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_03/2020-06-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_04/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_04/2020-07-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_05/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_05/2020-08-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_06/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_06/2020-09-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_07/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>remove_imbalance/walk_forward_07/2020-10-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_01/2020-04-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_02/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_02/2020-05-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_03/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_03/2020-06-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_04/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_04/2020-07-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_05/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_05/2020-08-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_06/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_06/2020-09-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_07/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>horizon_20/walk_forward_07/2020-10-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>final_holdout/final_holdout/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>final_holdout/final_holdout/2020-11-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>final_holdout/final_holdout/2020-12-01/majority: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>Simple majority baseline: No predictions for classes: -1, 1. Undefined precision/F1 components use zero.</li><li>boosted_vs_logistic: Exploratory session/date bootstrap: assumes exchangeable independent evaluation units; overlapping training folds do not create independent observations.</li><li>boosted_vs_logistic: Fewer than 10 session/date units; the percentile interval may be unstable and must not be read as proof of generalization.</li><li>boosted_vs_majority: Exploratory session/date bootstrap: assumes exchangeable independent evaluation units; overlapping training folds do not create independent observations.</li><li>boosted_vs_majority: Fewer than 10 session/date units; the percentile interval may be unstable and must not be read as proof of generalization.</li></ul></div></section><section id="research-note"><div class="eyebrow">Research note / evidence before claims</div><h2>Inconclusive evidence of improvement beyond the linear comparison</h2><div class="callout warning"><p class="research-text">The frozen comparisons do not jointly support a repeatable improvement beyond logistic regression. Any observed advantage is limited by variation across dates, a small independent sample, or missing-class coverage.</p></div><h3>Next test</h3><p class="research-text">Predeclare a new set of broader intraday dates and a new untouched holdout before further model selection.</p><p>Research findings are conditional on the observed instrument, dates, excerpt selection, target definition and data transformations. Classification scores alone establish neither executable latency nor fee-adjusted trading profitability.</p></section><section id="provenance"><div class="eyebrow">Reproduction / exact recorded evidence</div><h2>Follow the evidence trail.</h2><p>The sibling <a href="experiment.json">experiment.json</a> contains the aggregate evidence behind these tables. The <a href="report.md">Markdown report</a> is a portable technical summary. Keep all three files together when moving this report.</p><h3>Reproduce the recorded experiment</h3><pre tabindex="0" aria-label="Exact reproduction commands">uv sync --frozen --extra dev
+uv run microstructure fetch --config configs/research.json --raw-dir data/raw --source-lock data/sources.lock.json
+uv run microstructure run --config configs/research.json --raw-dir data/raw --output reports/runs
+uv run microstructure reproduce --reference reports/reference/experiment.json --raw-dir data/raw --output artifacts/reproduction</pre><p class="note">Data acquisition is a separate opt-in command with fixed byte/row limits. Obtain permitted data from its source; raw or sampled market rows and trained weights are excluded from the repository.</p><details><summary>Inspect code, configuration and feature fingerprints</summary><div class="details-body"><pre tabindex="0" aria-label="Code and configuration metadata">{
+  &quot;code&quot;: {
+    &quot;build_files&quot;: {
+      &quot;.python-version&quot;: &quot;845c494b4a7e1a741db19fd42eda239d3ee03b65f08276008943349a3055c9cc&quot;,
+      &quot;pyproject.toml&quot;: &quot;1a08561b036753e792af5ede22844b650152d23c4bd00598c948e5928f433432&quot;,
+      &quot;uv.lock&quot;: &quot;7bf3f1be22ce1d335ba525f84200653c1e589242e6227255bdc4830638850b1c&quot;
+    },
+    &quot;build_sha256&quot;: &quot;0a2e77fbe11f3a35f8b4206afa83a73e24ec8d6f548b6c2e0c363bed700ce8df&quot;,
+    &quot;dirty_tree&quot;: false,
+    &quot;provenance_note&quot;: &quot;Source hashes identify executable code even when report/docs commits follow.&quot;,
+    &quot;revision&quot;: &quot;9376319ce6db429b42d9ef0a670ab7e8994c4e23&quot;,
+    &quot;scientific_sha256&quot;: &quot;102a74ceb1a60cbab08d167138ea954696e8bc1cedfde4bab21aff82471caa45&quot;,
+    &quot;source_files&quot;: {
+      &quot;src/market_microstructure/__init__.py&quot;: &quot;2394a7f0c3da5e1455a2d4a3d37fd7df11197dcc3a6c5e6a2959aea7c5e4cc17&quot;,
+      &quot;src/market_microstructure/__main__.py&quot;: &quot;935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d&quot;,
+      &quot;src/market_microstructure/acquisition.py&quot;: &quot;11e2f4f893f8164ae998b903f8aa3b95d14f07c528571fe0bc989ed91515dbf9&quot;,
+      &quot;src/market_microstructure/cli.py&quot;: &quot;4c72eb4b343be11c07ab1f2b5f39e9405b90513b445543d92a60c85384e5301d&quot;,
+      &quot;src/market_microstructure/config.py&quot;: &quot;9004845bbd37199a3bf8ac5e64cd797cfa9bf2c3fdbd75b0164b3d4d9154bbc9&quot;,
+      &quot;src/market_microstructure/data.py&quot;: &quot;3176a42d0884f2dfb23473f7252a8da641912d72241584b4fb4d634c0a66378c&quot;,
+      &quot;src/market_microstructure/evaluation.py&quot;: &quot;85c4544a7b389df16490f2283c9fa355f4496ff0830e640b89c0cc2b2d550d36&quot;,
+      &quot;src/market_microstructure/experiment.py&quot;: &quot;afd5d9e47959cf22a2b262716baddb6ff65a7ed1b1d79f4a0fe418486d658e29&quot;,
+      &quot;src/market_microstructure/features.py&quot;: &quot;ef889426d15894b5cd3fc0c43269ab8835b4d21e9d47e6ac9a7065c3e6867192&quot;,
+      &quot;src/market_microstructure/manifests.py&quot;: &quot;20f6f2be9c4f47210fbbca3916ad98847b5f4cdeb87460b00f0629f3d0f6c757&quot;,
+      &quot;src/market_microstructure/models.py&quot;: &quot;79d822dd8a9c0af3e7c41e449a552d0c9aacebd6e4f4ae190f1445d2d88eaa0c&quot;,
+      &quot;src/market_microstructure/reporting.py&quot;: &quot;8f8d7969c4f22faa6d575052889153181af5570c228d741d906101739881543d&quot;,
+      &quot;src/market_microstructure/splits.py&quot;: &quot;0c3bcabf9bf44653abd3a3a2bb60d12f05a49d2aaa8a5e408b8aa0b1a5e7ab7a&quot;,
+      &quot;src/market_microstructure/synthetic.py&quot;: &quot;82569f37b6ca0d54491866521ccb8472411501471ff38e798144e7add43bca1a&quot;
+    },
+    &quot;source_sha256&quot;: &quot;d1cb5db3fb97bc2b63400e5e7ee07b4b3e5415501c00cdd36f53bc4147bfe316&quot;
+  },
+  &quot;config&quot;: {
+    &quot;data_type&quot;: &quot;book_snapshot_5&quot;,
+    &quot;dates&quot;: [
+      &quot;2020-01-01&quot;,
+      &quot;2020-02-01&quot;,
+      &quot;2020-03-01&quot;,
+      &quot;2020-04-01&quot;,
+      &quot;2020-05-01&quot;,
+      &quot;2020-06-01&quot;,
+      &quot;2020-07-01&quot;,
+      &quot;2020-08-01&quot;,
+      &quot;2020-09-01&quot;,
+      &quot;2020-10-01&quot;,
+      &quot;2020-11-01&quot;,
+      &quot;2020-12-01&quot;
+    ],
+    &quot;exchange&quot;: &quot;deribit&quot;,
+    &quot;gap_seconds&quot;: 30.0,
+    &quot;holdout_dates&quot;: 2,
+    &quot;horizon_events&quot;: 10,
+    &quot;max_compressed_bytes_per_date&quot;: 524288,
+    &quot;max_total_transfer_bytes&quot;: 25165824,
+    &quot;min_train_dates&quot;: 3,
+    &quot;robustness&quot;: {
+      &quot;alternate_horizon_events&quot;: 20,
+      &quot;development_only&quot;: true,
+      &quot;feature_ablation&quot;: &quot;remove_imbalance&quot;
+    },
+    &quot;rows_per_date&quot;: 20000,
+    &quot;schema_version&quot;: 1,
+    &quot;seed&quot;: 42,
+    &quot;symbol&quot;: &quot;BTC-PERPETUAL&quot;,
+    &quot;threshold_ticks&quot;: 1.0,
+    &quot;tick_size&quot;: 0.5,
+    &quot;trailing_window&quot;: 20
+  },
+  &quot;feature_columns&quot;: [
+    &quot;spread_ticks&quot;,
+    &quot;level1_imbalance&quot;,
+    &quot;depth5_imbalance&quot;,
+    &quot;bid_depth5&quot;,
+    &quot;ask_depth5&quot;,
+    &quot;mid_change_1_ticks&quot;,
+    &quot;mid_change_window_ticks&quot;,
+    &quot;mid_volatility_ticks&quot;,
+    &quot;spread_change_1_ticks&quot;,
+    &quot;imbalance_change_1&quot;
+  ],
+  &quot;fingerprints&quot;: {
+    &quot;build&quot;: &quot;0a2e77fbe11f3a35f8b4206afa83a73e24ec8d6f548b6c2e0c363bed700ce8df&quot;,
+    &quot;config&quot;: &quot;5d4059c9419831831dee184cdd148c60c75425288006471f0c6523790d0aec63&quot;,
+    &quot;environment&quot;: &quot;1671a55e4d9564cee99d041a218a77a0a732638946d2b9e32e5332dbdefe58a3&quot;,
+    &quot;feature_columns&quot;: &quot;cdfe32dc77d4b494eed529d4dce7aa0284a3493f3f5a3928ac2e653ab3768736&quot;,
+    &quot;normalized_states&quot;: &quot;d286808c5692bc3783be222f5dfad5e6807fa64f093d43c0dc3a34a00b9ad9c4&quot;,
+    &quot;raw_sources&quot;: &quot;3db6d6e29797bbabbb79ea04f582a05f4993fb7a6192a2d4b654738534ed82ec&quot;,
+    &quot;samples&quot;: &quot;2df42787c1c2e716b825e690233bd6b5e9a8f6e211ff07c4569ca2db74d166c5&quot;,
+    &quot;split_assignments&quot;: &quot;458cce745c77994b2942a2ebf42b4fc8341c2bb7591af7629702de6712771e5f&quot;
+  }
+}</pre></div></details><details><summary>Inspect source URLs and excerpt checksums (12 files)</summary><div class="details-body wide"><p class="scroll-hint">On a narrow screen, swipe this table sideways. With a keyboard, focus the table and use the left/right arrow keys.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Source URLs, local excerpt checksums and byte sizes"><table><thead><tr><th scope="col">Date</th><th scope="col">Exact source URL</th><th scope="col">Retained rows</th><th scope="col">Compressed bytes received</th><th scope="col">CSV excerpt bytes</th><th scope="col">Excerpt SHA-256</th><th scope="col">Compressed-prefix SHA-256</th></tr></thead><tbody><tr><td>2020-01-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/01/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/01/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,439,565</td><td><code class="hash">bc3b40f249060bda9411402bd2e704a3e861d5cfc691b3f3500ec71ebc4768c0</code></td><td><code class="hash">f9f6c3a666eeeeb1c1b1695ad1170a8d39b9a8cfb0cb47343bd51a5f719d80d2</code></td></tr><tr><td>2020-02-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/02/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/02/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,368,696</td><td><code class="hash">77daf543d84f82a913dc1b96dfe16d325acfda5fea148d2c7136679916a7373e</code></td><td><code class="hash">67ad21c12bc76762cd910c5ec3bcfbe9c04d2a7b15648a847d74b42ef0c22a66</code></td></tr><tr><td>2020-03-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/03/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/03/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,364,177</td><td><code class="hash">c61f294010cf0e47a88ba61ab5f0999423f2dcff51cabb94931a800a2ed1009c</code></td><td><code class="hash">f8fd5d6cc3d3fbace8bebd1fed0a82bfb31832f253aaf9bb38b54bd3a76a3205</code></td></tr><tr><td>2020-04-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/04/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/04/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,392,083</td><td><code class="hash">c433c782937192cf921a6f07b759fe7af46aee3af467843bc4a90e8c14a9598c</code></td><td><code class="hash">563770548fa58aba2dca62d3a2387ec7fee4cdc095f8abf86022e1c1bacc758a</code></td></tr><tr><td>2020-05-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/05/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/05/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,343,265</td><td><code class="hash">45a882f68fcb1024d8e6d9a771d88f344afdb6806a2f38fa9e0906d66216df1a</code></td><td><code class="hash">357afd13193cd67c714b3985df0e3c9d2325be2641b0d506c14620adb1c332fd</code></td></tr><tr><td>2020-06-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/06/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/06/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,359,647</td><td><code class="hash">ca493f79f62df095f5b740de036aa714cbc685dc17dba1f678090ececebd4d72</code></td><td><code class="hash">9a4bd7d9f0af243d0fb594d03212aba157149b14156825e80f7c2956effddd01</code></td></tr><tr><td>2020-07-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/07/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/07/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,400,181</td><td><code class="hash">e5cf751bffef6f5fcf125dd5a903be272829c848bb930b2be4c14b3d8975f66a</code></td><td><code class="hash">1d23cd0901c337c88ff4096041ed7bafeb83797e48d999832f9bc48472225728</code></td></tr><tr><td>2020-08-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/08/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/08/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,593,337</td><td><code class="hash">973f501e7dc3e77710181b4dff3313140e0538de1f74172e79696369cc6d3b40</code></td><td><code class="hash">8e31a02cacb131ea8d8af6d3a1671839e43ad774be24483253b5d0725e72f0b9</code></td></tr><tr><td>2020-09-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/09/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/09/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,595,975</td><td><code class="hash">ac68993a914f14e4d00ecf555fd23fd93266dfecfea3c081ff97a862eb395758</code></td><td><code class="hash">22d61d3a37bbc8804eeb395c97f8ec87d47820ac9b1fffc462a656aabfc243d1</code></td></tr><tr><td>2020-10-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/10/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/10/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,569,483</td><td><code class="hash">ab069d54c1784e06dcc3365a70346b122aa13dfd04a1b12338176635832792ba</code></td><td><code class="hash">0385cc62a8e16f54249bfb25ff0be5e747a38127140dd5b0541a08549fdb496e</code></td></tr><tr><td>2020-11-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/11/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/11/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>262,144</td><td>3,489,820</td><td><code class="hash">0a19d76e829a8ed9edae86a2197e815e2352208831e6d4075bd1f3803240a62e</code></td><td><code class="hash">0150ed5420bb48a8a0c966f7bdcc671406ce46e0b4e8673d82eed1fad1115a25</code></td></tr><tr><td>2020-12-01</td><td><span class="source-url"><a href="https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/12/01/BTC-PERPETUAL.csv.gz" rel="noreferrer">https://datasets.tardis.dev/v1/deribit/book_snapshot_5/2020/12/01/BTC-PERPETUAL.csv.gz</a></span></td><td>20,000</td><td>327,680</td><td>3,490,158</td><td><code class="hash">bc6a4a8d20c6cc70ef2e4b893cc0afc1fe5a4a82e03e754b1f4bf5bacd580150</code></td><td><code class="hash">7d686720d79b46a2d13ad3cdb738911a6796d10cb5d67b2c4f9c0f7932023cd8</code></td></tr></tbody></table></div><p class="note">Excerpt SHA-256 identifies the local complete-row CSV excerpt. Compressed-prefix SHA-256 identifies downloaded bytes. A prefix does not verify the complete vendor archive or its whole-file gzip CRC. Source files are not redistributed with this report.</p></div></details></section><footer class="footer">MARKET MICROSTRUCTURE ML &amp; VALIDATION PIPELINE · OFFLINE AGGREGATE EVIDENCE</footer></main></div></body></html>

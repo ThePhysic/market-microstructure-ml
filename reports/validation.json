@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "reference_experiment_id": "exp-13c5f0856ef3a87a",
+  "reference_code_revision": "9376319ce6db429b42d9ef0a670ab7e8994c4e23",
+  "scientific_source_sha256": "102a74ceb1a60cbab08d167138ea954696e8bc1cedfde4bab21aff82471caa45",
+  "config_sha256": "5d4059c9419831831dee184cdd148c60c75425288006471f0c6523790d0aec63",
+  "initial_experiment_id": "exp-f6aab567f4de3706",
+  "initial_clean_checkout_tests_passed": 221,
+  "initial_clean_checkout_reproduction": "exact metric match",
+  "final_clean_checkout_tests_passed": 226,
+  "formatter_only_changed_sources": [
+    "src/market_microstructure/reporting.py"
+  ],
+  "formatter_reexecution_metrics_vs_initial": "exact canonical match",
+  "scientific_choices_unchanged": true,
+  "aggregate_numeric_audit": {
+    "metric_objects": 135,
+    "matrix_sums": 66,
+    "summaries": 9,
+    "bootstrap_intervals": 6,
+    "inconsistencies": []
+  },
+  "browser_checks": {
+    "passed": 13,
+    "engine": "Chromium",
+    "widths": [
+      320,
+      390,
+      720,
+      1440
+    ],
+    "page_overflow": false,
+    "application_network_requests": 0,
+    "runtime_exceptions": 0
+  },
+  "final_clean_checkout_reproduction": "PASS: exact canonical metric match",
+  "final_clean_checkout_fingerprints": "All data, samples, features, splits and executable-source fingerprints match the reference.",
+  "final_clean_checkout_path": "Separate clone with its own locked virtual environment; raw inputs remain ignored and local.",
+  "static_analysis": {
+    "tool": "ruff 0.14.1",
+    "rules": "E9,F63,F7,F82",
+    "status": "PASS"
+  },
+  "review_evidence": "docs/reviews/final.json",
+  "publication_status": "Prepared for final independent review; repository privacy and remote commit will be verified after publication.",
+  "holdout_policy": "Initial frozen evaluation plus disclosed unchanged reproduction executions; no holdout-driven selection.",
+  "publication_exclusions": [
+    "Raw/processed historical rows",
+    "row predictions",
+    "trained weights",
+    "fitted preprocessing values",
+    "credentials",
+    "local caches"
+  ]
+}

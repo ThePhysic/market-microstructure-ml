@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "remaining_complaints": [],
+  "reviewer": {
+    "role": "Independent adversarial reviewer",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium"
+  },
+  "reviewed_source_revision": "9376319ce6db429b42d9ef0a670ab7e8994c4e23",
+  "reference_experiment_id": "exp-13c5f0856ef3a87a",
+  "initial_experiment_id": "exp-f6aab567f4de3706",
+  "scientific_source_sha256": "102a74ceb1a60cbab08d167138ea954696e8bc1cedfde4bab21aff82471caa45",
+  "scope": "P0-P6 implementation, research interpretation, local reproducibility, report readability and staged private-publication readiness. Remote publication has not yet been performed or verified.",
+  "resolved_findings": [
+    {
+      "finding": "Missing eligible dates could silently redefine the final holdout.",
+      "resolution": "Primary and alternate sample coverage and exact evaluation dates are validated against the frozen configuration before fitting; regression tests pass."
+    },
+    {
+      "finding": "Changing output directory bypassed the holdout registry, and scientific implementation changes were not bound to its contract.",
+      "resolution": "Registry location is stable within the project; contract identity includes scientific source, build and environment identities. Changed-output and changed-source regressions pass. The registry is a local workflow guard, not a tamper-proof external service."
+    },
+    {
+      "finding": "Dependency environment and build lock were absent from experiment cache identity and reference verification.",
+      "resolution": "Actual runtime versions and build-file hashes enter identity and verification; environment/build-change regressions pass."
+    },
+    {
+      "finding": "Development missing-class warnings and final fit warnings were omitted from readable reports.",
+      "resolution": "Contextual fold, model and date warnings propagate into report warnings; independent synthetic checks confirmed their presence in HTML and Markdown."
+    },
+    {
+      "finding": "Documentation needed exact reproduction semantics and explicit target-prevalence-shift context.",
+      "resolution": "Limitations now state exact canonical metric equality. Research report documents the development/final class-composition shift without asserting an identified cause."
+    }
+  ],
+  "independently_performed_checks": [
+    "Read implementation, frozen research contract, source/license evidence, phase handoffs, tests, final research report and publication metadata.",
+    "Executed the six affected pre-empirical regression tests: 6 passed. A sandbox attempt encountered the documented Windows temporary-directory ACL restriction; approved execution passed.",
+    "Recomputed macro F1, balanced accuracy and support from all 135 stored confusion-matrix metric objects; all agreed.",
+    "Recomputed all nine primary/robustness development means and sample standard deviations; all agreed.",
+    "Verified pooled final confusion matrices equal the sum of the two date-specific matrices.",
+    "Compared canonical metric projections of archived initial, final reference and separate clean-checkout reproduction artifacts: exact equality.",
+    "Compared all fingerprints, research-contract and scientific-source identities across those three artifacts: exact equality.",
+    "Verified final reference executable-source fingerprint matches the reviewed working tree and clean-checkout reproduction.",
+    "Inspected source diff from original frozen revision: reporting.py is the only executable change, limited to word wrapping and confidence-level labels.",
+    "Inspected final desktop conclusion and 320px mobile screenshots and the thirteen-check browser verification record.",
+    "Inspected staged publication file inventory and scanned aggregate artifacts for forbidden row, prediction, model-weight and fitted-preprocessing-value keys; none found."
+  ],
+  "reviewed_execution_evidence": {
+    "initial_clean_checkout_tests": "221 passed",
+    "final_clean_checkout_tests": "226 passed",
+    "final_clean_checkout_reproduction": "Exact canonical metric match, independently confirmed from its artifact",
+    "reference_verification": "Reported CLI verification passed source, locked dependencies, runtime versions, raw sources, normalized states, samples, features and split assignments",
+    "browser": "13 Chromium checks passed; 320/390/720px measurements and 1440px desktop inspection; no page overflow, application network requests or runtime exceptions",
+    "static_analysis": "Recorded Ruff E9,F63,F7,F82 checks passed"
+  },
+  "scientific_verdict": "The inconclusive conclusion is supported. Boosting leads on development date-mean macro F1, but logistic regression wins on both final dates and pooled final predictions. Reports distinguish date means from pooled nonlinear F1, disclose narrow coverage and class-prevalence shift, make no profitability claim, and do not claim an isolated imbalance benefit.",
+  "reexecution_verdict": "The formatter-only reexecution is disclosed, preserves the original evidence and exactly preserves the frozen scientific decisions and metrics. It is reproduction, not another independent experiment or model-selection opportunity.",
+  "publication_verdict": "PASS for publication of the reviewed staged source, synthetic tests, documentation, manifests and aggregate artifacts to the authorized private repository. Historical rows, event predictions, fitted model weights and fitted preprocessing values remain excluded.",
+  "remaining_delivery_steps": [
+    "Commit this review memo with the reviewed publication bundle.",
+    "Create/push the explicitly authorized private GitHub repository and verify remote privacy and commit identity.",
+    "Report actual hosted workflow status after publication; local checks do not establish a hosted CI result."
+  ]
+}

@@ -153,6 +153,11 @@ reproducibility/review. Phase evidence is under
 [docs/phase-handoffs](docs/phase-handoffs), and
 [limitations](docs/limitations.md) explain the boundaries on interpretation.
 
+The final clean checkout passes 226 tests and reproduces the reference metrics
+exactly. The [validation record](reports/validation.json) and
+[P6 handoff](docs/phase-handoffs/P6.md) distinguish the initial frozen study,
+report-format corrections and unchanged reproduction runs.
+
 The reviewed synthetic HTML proposal is a design reference, separate from
 measured research outputs. The implementation's core interface is the offline
 CLI and generated report artifacts.
