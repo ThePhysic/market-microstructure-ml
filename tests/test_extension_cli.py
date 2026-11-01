@@ -33,6 +33,8 @@ def test_report_escapes_dynamic_content_and_has_offline_evidence_links(tmp_path)
     assert "SYNTHETIC DEMONSTRATION" in html
     assert 'href="experiment.json"' in html and 'href="report.md"' in html
     assert "No execution results" in html
+    assert html.count("Synthetic fixture only.") == 2
+    assert "Declared practical improvement" in html and "Precision target" in html
     assert "annualized" in html or "continuous" in html
 
 
