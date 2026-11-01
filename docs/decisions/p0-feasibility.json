@@ -1,0 +1,46 @@
+{
+  "decision": "GO",
+  "predictive_model_scores_inspected": false,
+  "holdout_labels_inspected": false,
+  "config_sha256": "5d4059c9419831831dee184cdd148c60c75425288006471f0c6523790d0aec63",
+  "source_dates": [
+    "2020-01-01",
+    "2020-02-01",
+    "2020-03-01",
+    "2020-04-01",
+    "2020-05-01",
+    "2020-06-01",
+    "2020-07-01",
+    "2020-08-01",
+    "2020-09-01",
+    "2020-10-01",
+    "2020-11-01",
+    "2020-12-01"
+  ],
+  "source_records": 240000,
+  "retained_states": 240000,
+  "segments": 12,
+  "development_samples": 199700,
+  "development_target_support": {
+    "-1": 3215,
+    "0": 192786,
+    "1": 3699
+  },
+  "features": [
+    "spread_ticks",
+    "level1_imbalance",
+    "depth5_imbalance",
+    "bid_depth5",
+    "ask_depth5",
+    "mid_change_1_ticks",
+    "mid_change_window_ticks",
+    "mid_volatility_ticks",
+    "spread_change_1_ticks",
+    "imbalance_change_1"
+  ],
+  "conditions": [
+    "Twelve short monthly opening excerpts; limited generalization.",
+    "No historical rows, row predictions or trained models may be redistributed.",
+    "Reserved November/December target distribution remains uninspected until final evaluation."
+  ]
+}

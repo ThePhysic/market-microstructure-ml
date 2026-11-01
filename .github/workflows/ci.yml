@@ -1,0 +1,42 @@
+name: Offline research checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.5"
+          python-version: "3.12.15"
+          enable-cache: true
+      - name: Install locked environment
+        run: uv sync --frozen --extra dev
+      - name: Run unit, integration and adversarial tests without data access
+        run: uv run --offline python -m pytest -q -p no:cacheprovider
+        env:
+          UV_OFFLINE: "1"
+          HTTP_PROXY: "http://127.0.0.1:9"
+          HTTPS_PROXY: "http://127.0.0.1:9"
+      - name: Exercise the offline CLI
+        run: uv run --offline microstructure demo --rows-per-date 120 --output artifacts/ci-demo
+        env:
+          UV_OFFLINE: "1"
+          HTTP_PROXY: "http://127.0.0.1:9"
+          HTTPS_PROXY: "http://127.0.0.1:9"

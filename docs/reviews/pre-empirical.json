@@ -1,0 +1,19 @@
+{
+  "reviewer_model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "review_stage": "pre-empirical scientific safety",
+  "rounds": 3,
+  "status": "PASS",
+  "verdict": "No remaining complaints.",
+  "real_model_scores_inspected": false,
+  "reserved_real_label_distribution_inspected": false,
+  "independent_regressions_passed": 6,
+  "integrated_tests_passed": 221,
+  "resolved_findings": [
+    "Exact primary and alternate eligible-date coverage before fitting.",
+    "Output-independent holdout registry bound to content/scientific/build/environment identities.",
+    "Package and dependency-lock fingerprints in experiment/cache/verification identity.",
+    "Visible development, robustness, date-specific and final fit/metric warnings."
+  ],
+  "scope_limit": "Final empirical artifacts, conclusions, clean-checkout reproduction and publication contents require subsequent review."
+}

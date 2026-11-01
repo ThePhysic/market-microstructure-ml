@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "exchange": "deribit",
+  "symbol": "BTC-PERPETUAL",
+  "data_type": "book_snapshot_5",
+  "dates": [
+    "2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01",
+    "2020-05-01", "2020-06-01", "2020-07-01", "2020-08-01",
+    "2020-09-01", "2020-10-01", "2020-11-01", "2020-12-01"
+  ],
+  "horizon_events": 10,
+  "threshold_ticks": 1.0,
+  "tick_size": 0.5,
+  "trailing_window": 20,
+  "gap_seconds": 30.0,
+  "min_train_dates": 3,
+  "holdout_dates": 2,
+  "seed": 42,
+  "rows_per_date": 20000,
+  "max_compressed_bytes_per_date": 524288,
+  "max_total_transfer_bytes": 25165824,
+  "robustness": {
+    "feature_ablation": "remove_imbalance",
+    "alternate_horizon_events": 20,
+    "development_only": true
+  }
+}
