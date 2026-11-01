@@ -64,8 +64,9 @@ no live exchange or broker.
 The locked Python environment, immutable run metadata and data hashes support
 repeatability. Providers can change availability or files; any checksum mismatch
 must be reported rather than silently accepted. Numerical behavior may differ
-outside the pinned environment; reproduction compares against documented
-tolerances.
+outside the pinned environment. The CLI requires exact canonical metric equality
+in the recorded runtime; a different numerical result fails explicitly rather
+than being silently accepted under an undocumented tolerance.
 
 Provider terms cover free samples. Raw/processed event-level data, per-event
 predictions and fitted models remain local and are excluded from GitHub,

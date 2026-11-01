@@ -187,10 +187,19 @@ def _comparison_rows(result: Mapping[str, Any]) -> list[list[str]]:
     for name, value in comparisons.items():
         comparison = _mapping(value)
         lower, upper = comparison.get("ci_lower"), comparison.get("ci_upper")
+        try:
+            confidence = float(comparison.get("confidence"))
+        except (TypeError, ValueError, OverflowError):
+            confidence = None
+        confidence_label = (
+            f"{100 * confidence:g}%"
+            if confidence is not None and math.isfinite(confidence) and 0 < confidence < 1
+            else "Confidence level not recorded"
+        )
         interval = (
-            f"[{_number(lower)}, {_number(upper)}]"
+            f"{confidence_label} [{_number(lower)}, {_number(upper)}]"
             if lower is not None and upper is not None else
-            "Not reported: insufficient evaluation dates"
+            f"{confidence_label}: interval not reported; insufficient evaluation dates"
         )
         rows.append([
             str(name).replace("_vs_", " minus ").replace("_", " "),
@@ -262,7 +271,7 @@ h1{font:44px/1.15 Georgia,serif;letter-spacing:-1.1px;max-width:900px;margin:13p
 .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:24px 0}.metric-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:19px}.metric-card span{display:block;font-size:14px;color:#4a653e}.metric-card strong{display:block;font:31px/1.5 var(--mono);letter-spacing:-1px;color:#2e5030;overflow-wrap:anywhere}.metric-card p{font-size:14px;margin:3px 0 0;color:#58714b}
 .panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;margin:20px 0}.panel h2{font-size:22px}.panel h3:first-child{margin-top:0}.callout{background:#edf3e5;border-left:4px solid #82a464;border-radius:0 6px 6px 0;padding:18px 20px;margin:18px 0;color:#405e32}.callout.warning{background:#faf0dc;border-color:#c7a15b;color:#74571f}.callout p:last-child{margin-bottom:0}
 .table-wrap{overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:6px;scrollbar-width:thin;overscroll-behavior-x:contain}.table-wrap:focus-visible{outline-offset:-3px}table{border-collapse:collapse;width:100%;min-width:660px;font-size:14px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e6ece1;padding:12px 14px}th{background:#f1f5ec;color:#3c5d2f;font-weight:600;font-size:14px}td{color:#49623c}tbody tr:last-child td{border-bottom:0}.scroll-hint{font-size:14px;color:#566e47;margin:15px 0 9px}.wide table{min-width:960px}.hash{font:12px/1.7 var(--mono);overflow-wrap:anywhere;max-width:230px;display:block}.source-url{overflow-wrap:anywhere;min-width:240px;display:block}
-.legend{font-size:14px;color:#49643c;background:#f2f6ed;padding:16px 18px;border-radius:6px;margin:18px 0}.legend p:last-child{margin-bottom:0}.warning-list{padding-left:23px;color:#70552c}.warning-list li{margin:7px 0}.empty{padding:16px;background:#f4f5f0;border:1px dashed #cfd8c7;color:#627455;border-radius:6px}
+.legend{font-size:14px;color:#49643c;background:#f2f6ed;padding:16px 18px;border-radius:6px;margin:18px 0}.legend p:last-child{margin-bottom:0}.warning-list{padding-left:23px;color:#70552c;overflow-wrap:anywhere}.warning-list li{margin:7px 0}.empty{padding:16px;background:#f4f5f0;border:1px dashed #cfd8c7;color:#627455;border-radius:6px}
 details{border:1px solid var(--line);border-radius:7px;background:#fff;margin:18px 0}summary{cursor:pointer;min-height:46px;padding:13px 17px;font-size:15px;font-weight:600;color:#3b602d}details>.details-body{padding:0 18px 18px}pre{background:#1e3023;color:#deebd1;padding:20px;border-radius:6px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:440px;overflow:auto;font:13px/1.8 var(--mono);max-width:100%}code{font-family:var(--mono);font-size:.92em}
 .note{color:#516b43;font-size:14px}.research-text{white-space:pre-line}.footer{padding:12px 0 5px;font:12px/1.8 var(--mono);letter-spacing:.4px;color:#5d7350;border-top:1px solid var(--line)}
 @media(max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:39px}}

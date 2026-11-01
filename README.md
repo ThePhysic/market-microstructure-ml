@@ -120,6 +120,31 @@ The predeclared robustness checks remove imbalance features and examine a
 20-state horizon on development data only. They do not select settings from
 final-holdout performance.
 
+## Measured result
+
+The frozen historical study is **inconclusive about improvement beyond logistic
+regression**. Boosted trees lead on the seven development dates, but logistic
+regression wins on each of the two final dates and on their pooled predictions.
+
+| Model | Development date-mean macro F1 | Final pooled macro F1 |
+| --- | ---: | ---: |
+| Training-majority rule | 0.326678 | 0.272051 |
+| Logistic regression | 0.434971 | **0.497672** |
+| Boosted trees | **0.460571** | 0.457272 |
+
+The primary pipeline produces 239,640 labeled samples from twelve short opening
+excerpts. Correlated states are not independent trials. The development
+boosted-minus-logistic difference is +0.025600, with a descriptive 95% paired
+date-bootstrap interval [+0.015060, +0.039279] based on only seven date units.
+The final pooled difference reverses to -0.040401. Removing imbalance inputs
+does not reduce the boosted development score, so this study does not isolate
+imbalance as the cause of its development advantage. There is no profitability
+claim or modeled execution/cost strategy.
+
+See the [research report](docs/research-report.md) for per-date results,
+class imbalance, robustness checks, fingerprints and uncertainty limits, and
+[interview notes](docs/interview-notes.md) for a concise discussion of the work.
+
 ## Scope and evidence
 
 The work follows P0 source feasibility, P1 ingestion, P2 causal features,

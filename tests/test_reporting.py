@@ -183,6 +183,42 @@ def test_real_kind_receives_bounded_historical_banner_without_synthetic_findings
     assert "SYNTHETIC FIXTURE — DEMONSTRATION ONLY" not in rendered_html
 
 
+@pytest.mark.parametrize(
+    ("confidence", "label"), [(0.95, "95%"), (0.90, "90%"), (0.955, "95.5%")]
+)
+def test_interval_confidence_level_is_taken_from_evidence_in_html_and_markdown(
+    tmp_path, confidence, label
+):
+    result = _result()
+    interval = result["development"]["paired_comparisons"]["boosted_vs_logistic"]
+    interval.update(confidence=confidence, ci_lower=0.01, ci_upper=0.03, status="exploratory")
+    paths = write_reports(result, tmp_path)
+    rendered_html = Path(paths["html"]).read_text(encoding="utf-8")
+    markdown = Path(paths["markdown"]).read_text(encoding="utf-8")
+    assert f"{label} [0.010, 0.030]" in rendered_html
+    assert f"{label} \\[0.010, 0.030\\]" in markdown
+    assert json.loads(Path(paths["json"]).read_text(encoding="utf-8")) == result
+
+
+def test_missing_interval_confidence_is_not_silently_assumed_to_be_95_percent(tmp_path):
+    result = _result()
+    result["development"]["paired_comparisons"]["boosted_vs_logistic"].update(
+        ci_lower=0.01, ci_upper=0.03
+    )
+    paths = write_reports(result, tmp_path)
+    for name in ("html", "markdown"):
+        assert "Confidence level not recorded" in Path(paths[name]).read_text(encoding="utf-8")
+
+
+def test_long_warning_prefixes_have_narrow_screen_wrapping_without_altering_text(tmp_path):
+    result = _result()
+    warning = "remove_imbalance/walk_forward_01/majority:" + "x" * 200
+    result["warnings"] = [warning]
+    rendered_html = Path(write_reports(result, tmp_path)["html"]).read_text(encoding="utf-8")
+    assert warning in rendered_html
+    assert re.search(r"\.warning-list\{[^}]*overflow-wrap:anywhere", rendered_html)
+
+
 @pytest.mark.parametrize("value", [float("nan"), float("inf"), float("-inf"), object()])
 def test_nonjson_or_nonfinite_evidence_fails_before_output_is_written(tmp_path, value):
     result = _result()

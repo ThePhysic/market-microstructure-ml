@@ -1,0 +1,19 @@
+{
+  "recorded_at_utc": "2026-11-01T06:37:26.851809+00:00",
+  "initial_experiment_id": "exp-f6aab567f4de3706",
+  "initial_code_revision": "8e645136152197f1d9a4afb3eab5f3df61f77d12",
+  "scientific_source_sha256": "102a74ceb1a60cbab08d167138ea954696e8bc1cedfde4bab21aff82471caa45",
+  "scientific_source_unchanged": true,
+  "research_configuration_unchanged": true,
+  "data_and_split_choices_unchanged": true,
+  "changes": [
+    "Wrap long warning context labels to avoid narrow-screen overflow.",
+    "Display the stored confidence level beside HTML/Markdown interval bounds.",
+    "Correct documentation to describe implemented exact metric equality."
+  ],
+  "original_clean_checkout_reproduction": "PASS: exact equality, plus 221 offline tests.",
+  "reason_for_reexecution": "Reproduce the same frozen analysis with updated report-source provenance; not a new model-selection trial.",
+  "acceptance": "All development, robustness, final and per-date metrics must exactly equal the archived initial experiment.",
+  "original_evidence_preserved": "reports/initial/experiment.json",
+  "original_evidence_semantic_sha256": "8c84629268f223dba247cde7c7a86c3af49649a44f31fba2c6b5eec707c85b5d"
+}
