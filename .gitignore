@@ -10,8 +10,11 @@ data/raw/
 data/processed/
 data/cache/
 data/downloads/
+data/extension/raw/
+data/extension/processed/
 artifacts/
 reports/runs/
+reports/extension/runs/
 *.pkl
 *.pickle
 *.joblib

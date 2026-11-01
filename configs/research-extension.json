@@ -77,7 +77,11 @@
     "max_disk_bytes": 5368709120,
     "max_wall_seconds": 1200,
     "max_compressed_bytes_per_date": 16777216,
-    "max_decompressed_bytes_per_date": 167772160
+    "max_decompressed_bytes_per_date": 167772160,
+    "minimum_window_states": 100,
+    "minimum_window_span_seconds": 840,
+    "maximum_window_edge_gap_seconds": 60,
+    "maximum_excluded_fraction": 0.01
   },
   "research": {
     "schema_version": 1,

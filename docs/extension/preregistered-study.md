@@ -22,6 +22,12 @@ avoid applying spot accounting to an inverse perpetual without funding inputs.
   data, credentials or live exchange connection.
 - Data quality and all date/window coverage must pass before fitting. An exact
   source lock pins downloaded content. No silent source/date substitution.
+- Before bulk acquisition, freeze objective availability gates: each of 384
+  windows has at least 100 valid states, observed span at least 840 of 900
+  seconds, first/last observation within 60 seconds of its window edge, and
+  excluded fraction at most 1% per date. All 48 dates and eight windows/date
+  must qualify. These are coverage checks, not target/score checks; they cannot
+  certify the absence of short unrecorded disconnects.
 
 ## Prediction and evaluation
 
