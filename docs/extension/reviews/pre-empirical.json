@@ -6,10 +6,25 @@
     "model": "gpt-6-astra",
     "reasoning_effort": "medium"
   },
-  "source_identity": "3e64b103c64c41e18f5239ad1a0101aadb63e2dd00313e3840485a930438d9ee",
-  "observed_revision": "5922a291da3715aa8079718dad6789f684180fa8",
+  "source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f",
+  "observed_revision": "af70575a0fff766284103233a6ba74467f6192d1",
+  "initial_review_source_identity": "3e64b103c64c41e18f5239ad1a0101aadb63e2dd00313e3840485a930438d9ee",
+  "source_rebind": "Only extension/reporting.py changed among executable sources after the initial clean review: horizontal table guidance, visible numeric practical/precision thresholds, and repeated synthetic-data qualifications. Reviewed diff is presentation-only; four offline CLI/report tests pass. Source identity binds actual working-tree bytes, including these reviewed renderer edits.",
   "remaining_complaints": [],
-  "scope": "Independent adversarial review of extension acquisition, normalized lineage, temporal boundaries, causal features and signals, exact targets, chronological research, uncertainty, Decimal spot execution, configuration, source freeze, holdout registry and publication boundary before historical fitting or reserved scoring.",
+  "scope": "Independent adversarial review of extension acquisition, normalized lineage, temporal boundaries, causal features and signals, exact targets, chronological research, uncertainty, Decimal spot execution, configuration, source freeze, holdout registry and publication boundary before reserved scoring. Initial review preceded all historical fitting; subsequent review examined development-only precision planning and presentation changes.",
+  "development_precision_review": {
+    "artifact": "artifacts/extension/pilot-001/pilot-761d9be3f3673eb8/experiment.json",
+    "final_results": null,
+    "pilot_block_count": 4,
+    "pilot_block_mean_sd": 0.06706681425008036,
+    "estimated_final_half_width": 0.0464740771780679,
+    "target_half_width": 0.015,
+    "estimated_required_final_blocks": 77,
+    "estimated_required_final_dates": 231,
+    "decision": "Fixed 24-date final evaluation may proceed only with exploratory_only_acknowledged. Preserve dates, practical delta, precision target, models and scenarios. Final claim_status must remain exploratory_precision_unmet and research_decisiveness_met false even if its conditional interval is favorable.",
+    "limitation": "The 77-block extrapolation comes from only four pilot blocks and is an uncertain planning estimate, not a certified requirement or guaranteed power. Positive development differences do not waive the precision gate.",
+    "freeze_condition": "The pilot artifact used by the freeze must match the rebound executable source identity; repeat development-only planning and verify unchanged quantitative outputs."
+  },
   "resolved_findings": [
     {
       "finding": "Floating-point midpoint differences misclassified exact one-cent threshold moves.",
@@ -35,9 +50,9 @@
     "Verified current Tardis terms dated 2026-10-28 directly: internal ML use and qualifying non-reconstructible research reports are supported; historical records and trained models remain local."
   ],
   "review_boundaries": [
-    "No historical model was fitted and no reserved target distribution, score or simulation output was inspected during this review.",
+    "No historical model was fitted by the reviewer. Initial review preceded all historical fitting. Subsequent review inspected development-only aggregate planning; no reserved target distribution, score or simulation output was inspected.",
     "This pass authorizes the frozen research workflow to proceed; it is not a claim of predictive gain, achieved precision, profitability or realistic exchange fills.",
-    "The development precision plan and final aggregate evidence require subsequent review. Four pilot blocks and eight final block equivalents do not establish independence; declared uncertainty remains conditional.",
+    "The development precision plan has been reviewed and is inadequate for the declared precision target; final aggregate evidence still requires subsequent review. Four pilot blocks and eight final block equivalents do not establish independence; declared uncertainty remains conditional.",
     "The local registry is an accidental-tuning guard, not tamper-proof enforcement across clones."
   ],
   "source_references": [

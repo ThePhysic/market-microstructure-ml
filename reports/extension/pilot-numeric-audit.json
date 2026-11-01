@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "scope": "aggregate-only independent development pilot numeric audit; no final outcomes or fitting",
+  "source_experiment_id": "pilot-761d9be3f3673eb8",
+  "source_sha256": "be5049768b54c1bde4340de3aa345cc4fdf2b77690e47a2c10be84120c3be494",
+  "passed": true,
+  "checks": 1292,
+  "max_absolute_numeric_error": 1.1102230246251565e-16,
+  "failures": [],
+  "model_date_means": {
+    "majority": {
+      "macro_f1_mean": 0.20484219717417165,
+      "macro_f1_std": 0.023993081195765487,
+      "balanced_accuracy_mean": 0.3333333333333333,
+      "date_count": 12,
+      "test_count": 128703
+    },
+    "history_logistic": {
+      "macro_f1_mean": 0.2968698032049493,
+      "macro_f1_std": 0.04328037233116664,
+      "balanced_accuracy_mean": 0.34320759522233124,
+      "date_count": 12,
+      "test_count": 128703
+    },
+    "book_logistic": {
+      "macro_f1_mean": 0.3477300188133468,
+      "macro_f1_std": 0.034379598572895326,
+      "balanced_accuracy_mean": 0.3614383658598202,
+      "date_count": 12,
+      "test_count": 128703
+    },
+    "boosted": {
+      "macro_f1_mean": 0.3728561903172766,
+      "macro_f1_std": 0.037684659158876685,
+      "balanced_accuracy_mean": 0.37980971864745,
+      "date_count": 12,
+      "test_count": 128703
+    }
+  },
+  "per_development_date": [
+    {
+      "date": "2022-01-01",
+      "support": 9630,
+      "class_support": {
+        "down": 4159,
+        "unchanged": 433,
+        "up": 5038
+      },
+      "class_fraction": {
+        "down": 0.4318795430944964,
+        "unchanged": 0.04496365524402907,
+        "up": 0.5231568016614746
+      },
+      "macro_f1": {
+        "majority": 0.22897918371057177,
+        "history_logistic": 0.33922514267769976,
+        "book_logistic": 0.34048779489237724,
+        "boosted": 0.3428650692234496
+      },
+      "book_minus_history": 0.0012626522146774732
+    },
+    {
+      "date": "2022-02-01",
+      "support": 11911,
+      "class_support": {
+        "down": 5727,
+        "unchanged": 541,
+        "up": 5643
+      },
+      "class_fraction": {
+        "down": 0.4808160523885484,
+        "unchanged": 0.04542019981529678,
+        "up": 0.4737637477961548
+      },
+      "macro_f1": {
+        "majority": 0.21431012874558505,
+        "history_logistic": 0.3096928826374232,
+        "book_logistic": 0.3163710848959684,
+        "boosted": 0.3445168417872315
+      },
+      "book_minus_history": 0.006678202258545207
+    },
+    {
+      "date": "2022-03-01",
+      "support": 13383,
+      "class_support": {
+        "down": 6700,
+        "unchanged": 520,
+        "up": 6163
+      },
+      "class_fraction": {
+        "down": 0.500635134125383,
+        "unchanged": 0.0388552641410745,
+        "up": 0.46050960173354255
+      },
+      "macro_f1": {
+        "majority": 0.21020498652750774,
+        "history_logistic": 0.33369043812052296,
+        "book_logistic": 0.3473275162185048,
+        "boosted": 0.3624112750375867
+      },
+      "book_minus_history": 0.013637078097981814
+    },
+    {
+      "date": "2022-04-01",
+      "support": 11773,
+      "class_support": {
+        "down": 5406,
+        "unchanged": 371,
+        "up": 5996
+      },
+      "class_fraction": {
+        "down": 0.45918627367705767,
+        "unchanged": 0.031512783487641215,
+        "up": 0.5093009428353011
+      },
+      "macro_f1": {
+        "majority": 0.22496107453054948,
+        "history_logistic": 0.349092915971925,
+        "book_logistic": 0.3552275465093624,
+        "boosted": 0.371574917731141
+      },
+      "book_minus_history": 0.006134630537437402
+    },
+    {
+      "date": "2022-05-01",
+      "support": 9575,
+      "class_support": {
+        "down": 4428,
+        "unchanged": 563,
+        "up": 4584
+      },
+      "class_fraction": {
+        "down": 0.4624543080939948,
+        "unchanged": 0.05879895561357702,
+        "up": 0.4787467362924282
+      },
+      "macro_f1": {
+        "majority": 0.21583445158556394,
+        "history_logistic": 0.3232512086438242,
+        "book_logistic": 0.34310257833626195,
+        "boosted": 0.3672532297703608
+      },
+      "book_minus_history": 0.01985136969243778
+    },
+    {
+      "date": "2022-06-01",
+      "support": 8674,
+      "class_support": {
+        "down": 4077,
+        "unchanged": 574,
+        "up": 4023
+      },
+      "class_fraction": {
+        "down": 0.4700253631542541,
+        "unchanged": 0.06617477519022366,
+        "up": 0.4637998616555222
+      },
+      "macro_f1": {
+        "majority": 0.21123099944868864,
+        "history_logistic": 0.33089075093689607,
+        "book_logistic": 0.3328191253373316,
+        "boosted": 0.3896852057316726
+      },
+      "book_minus_history": 0.0019283744004355285
+    },
+    {
+      "date": "2022-07-01",
+      "support": 11401,
+      "class_support": {
+        "down": 5519,
+        "unchanged": 371,
+        "up": 5511
+      },
+      "class_fraction": {
+        "down": 0.48408034382948867,
+        "unchanged": 0.03254100517498465,
+        "up": 0.4833786509955267
+      },
+      "macro_f1": {
+        "majority": 0.21724219489120153,
+        "history_logistic": 0.3004952841976729,
+        "book_logistic": 0.32194984759923023,
+        "boosted": 0.3675055578211854
+      },
+      "book_minus_history": 0.021454563401557325
+    },
+    {
+      "date": "2022-08-01",
+      "support": 10188,
+      "class_support": {
+        "down": 4942,
+        "unchanged": 244,
+        "up": 5002
+      },
+      "class_fraction": {
+        "down": 0.4850804868472713,
+        "unchanged": 0.023949744797801334,
+        "up": 0.49096976835492734
+      },
+      "macro_f1": {
+        "majority": 0.21953039280228218,
+        "history_logistic": 0.28738065946055974,
+        "book_logistic": 0.36084040659989675,
+        "boosted": 0.3396988983567053
+      },
+      "book_minus_history": 0.073459747139337
+    },
+    {
+      "date": "2022-09-01",
+      "support": 12944,
+      "class_support": {
+        "down": 5814,
+        "unchanged": 1329,
+        "up": 5801
+      },
+      "class_fraction": {
+        "down": 0.4491656365883807,
+        "unchanged": 0.10267305315203956,
+        "up": 0.4481613102595797
+      },
+      "macro_f1": {
+        "majority": 0.2063127945229839,
+        "history_logistic": 0.28702150357017614,
+        "book_logistic": 0.3051034742130348,
+        "boosted": 0.3837641018175509
+      },
+      "book_minus_history": 0.018081970642858658
+    },
+    {
+      "date": "2022-10-01",
+      "support": 8880,
+      "class_support": {
+        "down": 3576,
+        "unchanged": 2016,
+        "up": 3288
+      },
+      "class_fraction": {
+        "down": 0.4027027027027027,
+        "unchanged": 0.22702702702702704,
+        "up": 0.37027027027027026
+      },
+      "macro_f1": {
+        "majority": 0.1801446416831032,
+        "history_logistic": 0.23293868026811393,
+        "book_logistic": 0.3477712621998932,
+        "boosted": 0.3247503226801933
+      },
+      "book_minus_history": 0.11483258193177925
+    },
+    {
+      "date": "2022-11-01",
+      "support": 10720,
+      "class_support": {
+        "down": 3926,
+        "unchanged": 2665,
+        "up": 4129
+      },
+      "class_fraction": {
+        "down": 0.3662313432835821,
+        "unchanged": 0.24860074626865672,
+        "up": 0.3851679104477612
+      },
+      "macro_f1": {
+        "majority": 0.1853772420140526,
+        "history_logistic": 0.2518823677991422,
+        "book_logistic": 0.35987827897590496,
+        "boosted": 0.4191207291146181
+      },
+      "book_minus_history": 0.10799591117676277
+    },
+    {
+      "date": "2022-12-01",
+      "support": 9624,
+      "class_support": {
+        "down": 3024,
+        "unchanged": 3949,
+        "up": 2651
+      },
+      "class_fraction": {
+        "down": 0.314214463840399,
+        "unchanged": 0.41032834580216127,
+        "up": 0.2754571903574397
+      },
+      "macro_f1": {
+        "majority": 0.14397827562797014,
+        "history_logistic": 0.21687580417543625,
+        "book_logistic": 0.44188130998239505,
+        "boosted": 0.46112813473562375
+      },
+      "book_minus_history": 0.2250055058069588
+    }
+  ],
+  "bootstrap_independent_checks": {
+    "book_logistic_vs_history_logistic": {
+      "recomputed_mc95": [
+        0.010155851646128188,
+        0.0921255803296737
+      ],
+      "complete_block_distribution_95": [
+        0.010158478206870238,
+        0.09347171334987564
+      ],
+      "exact_distribution_count": 10000,
+      "difference_mean": 0.05086021560839742,
+      "difference_sd": 0.0682822751810613
+    },
+    "boosted_vs_book_logistic": {
+      "recomputed_mc95": [
+        0.016271969857510435,
+        0.03530177078155257
+      ],
+      "complete_block_distribution_95": [
+        0.016271969857510435,
+        0.03563883055264253
+      ],
+      "exact_distribution_count": 10000,
+      "difference_mean": 0.025126171503929803,
+      "difference_sd": 0.031120812648041535
+    }
+  },
+  "precision_closed_form": {
+    "nonoverlapping_three_date_block_means": [
+      0.007192644190401498,
+      0.009304791543436905,
+      0.037665427061251,
+      0.14927799963850027
+    ],
+    "sample_sd_of_block_means": 0.06706681425008036,
+    "z": 1.9599639845400536,
+    "required_blocks": 77,
+    "required_dates": 231,
+    "planned_dates": 24,
+    "projected_half_width": 0.0464740771780679,
+    "target_half_width": 0.015
+  },
+  "development_heterogeneity": {
+    "first_three_date_mean_effect": 0.007192644190401498,
+    "remaining_nine_date_mean_effect": 0.06541607274772938,
+    "first_three_share_of_sum_effects": 0.03535496312963888,
+    "positive_date_count": 12,
+    "date_count": 12,
+    "largest_effect_date": "2022-12-01",
+    "largest_effect": 0.2250055058069588,
+    "last_three_date_mean_effect": 0.14927799963850027,
+    "last_three_share_of_sum_effects": 0.7337660578745822
+  },
+  "interpretation": "All effects are development-only. Four pilot date blocks and a wide primary interval imply an unmet projected precision target; they do not authorize a confirmatory final or profitability claim.",
+  "class_composition_note": "Unchanged class share is about 2.4%-10.3% January-September, then 22.7%,24.9%,41.0% in October-December. The largest primary gains occur late in development, not in the first months; this suggests time/target-composition heterogeneity but does not establish its cause."
+}

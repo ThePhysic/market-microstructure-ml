@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "initial_pilot_id": "pilot-761d9be3f3673eb8",
+  "source_bound_pilot_id": "pilot-5b363cb7828541a9",
+  "changed_sources": [
+    "src/market_microstructure/extension/reporting.py"
+  ],
+  "research_choices_unchanged": true,
+  "quantitative_outputs": "exact canonical match",
+  "final_results_inspected": false,
+  "reason": "Before final evaluation, expose numeric thresholds, table-navigation instructions and local synthetic qualifiers in the report.",
+  "precision_status": "insufficient_precision",
+  "precision_action": "Retain fixed choices; final evaluation can be exploratory only. Do not promote a decisive claim from insufficient planning precision.",
+  "source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f"
+}
