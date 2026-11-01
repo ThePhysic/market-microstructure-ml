@@ -116,6 +116,9 @@ largest first-edge gap **3.920 seconds**, and largest last-edge gap **12.256
 seconds**. One additional within-window gap over 30 seconds creates an extra
 segment; the other segment boundaries follow the fixed date/window selection.
 These are observed timing facts, not proof of exchange-feed completeness.
+Three exchange-timestamp decreases and six repeated book payloads are counted
+and retained under the declared receipt-time/source-order policy. Neither is
+silently recast as a receipt-time regression or a duplicate source record.
 
 No selected price cell is off the 0.01 USD research grid, and no selected size
 cell is off the 0.00000001 BTC research grid. These checks do not certify every

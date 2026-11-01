@@ -1,0 +1,341 @@
+{
+  "status": "PASS",
+  "kind": "synthetic_performance_benchmark",
+  "environment": {
+    "python": "3.12.15",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.2.5",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.1"
+    }
+  },
+  "source_identity": "3e64b103c64c41e18f5239ad1a0101aadb63e2dd00313e3840485a930438d9ee",
+  "provenance": {
+    "code": {
+      "revision": "5922a291da3715aa8079718dad6789f684180fa8",
+      "dirty_tree": false,
+      "source_sha256": "ca4afd6dd154d2e5287994b90a1989dbb3f40cad0024fe1c5da44c2d5b8bf022",
+      "source_files": {
+        "src/market_microstructure/__init__.py": "2394a7f0c3da5e1455a2d4a3d37fd7df11197dcc3a6c5e6a2959aea7c5e4cc17",
+        "src/market_microstructure/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "src/market_microstructure/acquisition.py": "11e2f4f893f8164ae998b903f8aa3b95d14f07c528571fe0bc989ed91515dbf9",
+        "src/market_microstructure/cli.py": "4c72eb4b343be11c07ab1f2b5f39e9405b90513b445543d92a60c85384e5301d",
+        "src/market_microstructure/config.py": "9004845bbd37199a3bf8ac5e64cd797cfa9bf2c3fdbd75b0164b3d4d9154bbc9",
+        "src/market_microstructure/data.py": "3176a42d0884f2dfb23473f7252a8da641912d72241584b4fb4d634c0a66378c",
+        "src/market_microstructure/evaluation.py": "85c4544a7b389df16490f2283c9fa355f4496ff0830e640b89c0cc2b2d550d36",
+        "src/market_microstructure/experiment.py": "afd5d9e47959cf22a2b262716baddb6ff65a7ed1b1d79f4a0fe418486d658e29",
+        "src/market_microstructure/extension/__init__.py": "d9ae8f42dcbe1234bcefa4f95654bc56273c33a4eeafdbacbeb2a6f316b1bd23",
+        "src/market_microstructure/extension/__main__.py": "00a982255cd21b1b94b9c26174d6a90690e29adae45a54291cf54fd6163896d1",
+        "src/market_microstructure/extension/acquisition.py": "62644597a94386193ee4a56fd0511f00559cb6e88e14166ea5d06a53d45e3e8c",
+        "src/market_microstructure/extension/analytics.py": "8fe0d131bc79a6115498b252ceeba2d596749c3a82cafaf7641ee96d4092431c",
+        "src/market_microstructure/extension/benchmark.py": "238264d279f7e97357ec07acf1d413eb6994c20e1d421300ec6f34cfcedfb870",
+        "src/market_microstructure/extension/cli.py": "e243e2897b50a877df03aaada1ccda94b1c30c4ba30a596bd31c629317902ffe",
+        "src/market_microstructure/extension/config.py": "7fd9b9e2450be73bac919fd6431f77c4319c34dbfe94008203e5defca045098c",
+        "src/market_microstructure/extension/coverage.py": "84fcebff333f352cf9019d2cc615fd2f2b7be78cf9ba454c81806a033d6dbdb2",
+        "src/market_microstructure/extension/fixtures.py": "b6a70b50454bccb41366545b629468390ddc0e6bc18f0ac85f4b18dc423e37bb",
+        "src/market_microstructure/extension/provenance.py": "d76ee0e11ca89c752b859f6784bd833f64c2f4333e0fe6e6ec79b4904460e5c4",
+        "src/market_microstructure/extension/replay.py": "698be60620aa19c4c8379cd3cbd79fd228a788a8be07b0ce807c99183d25c5ee",
+        "src/market_microstructure/extension/replication.py": "930c38be9014d46a1f08f7b914ce7391de7a3327938d04c3642da99dcda80908",
+        "src/market_microstructure/extension/reporting.py": "90e282c144e12946d8f745b38bf86d8d61e0cbf2f8acf1adbfa67c28c6114ef5",
+        "src/market_microstructure/extension/simulation.py": "241f968c149f57a1773ead33e85cf35b2c4fc661dc08db8ebfa7d7c8222d9dfc",
+        "src/market_microstructure/extension/statistics.py": "c0ee6e443f761946582a859d3b1737c8e5cfa1eda7907a0dd1d67f39a3c8e6a1",
+        "src/market_microstructure/extension/storage.py": "8f9fc4518c136901d460c2081770b855e87d3aa37e740769617865de32b88f75",
+        "src/market_microstructure/extension/study.py": "830076eff857d6ef9d36af5aeba1e19f1bc0475de0da5e7ae414320a8417f085",
+        "src/market_microstructure/features.py": "ef889426d15894b5cd3fc0c43269ab8835b4d21e9d47e6ac9a7065c3e6867192",
+        "src/market_microstructure/manifests.py": "20f6f2be9c4f47210fbbca3916ad98847b5f4cdeb87460b00f0629f3d0f6c757",
+        "src/market_microstructure/models.py": "79d822dd8a9c0af3e7c41e449a552d0c9aacebd6e4f4ae190f1445d2d88eaa0c",
+        "src/market_microstructure/reporting.py": "8f8d7969c4f22faa6d575052889153181af5570c228d741d906101739881543d",
+        "src/market_microstructure/splits.py": "0c3bcabf9bf44653abd3a3a2bb60d12f05a49d2aaa8a5e408b8aa0b1a5e7ab7a",
+        "src/market_microstructure/synthetic.py": "82569f37b6ca0d54491866521ccb8472411501471ff38e798144e7add43bca1a"
+      },
+      "scientific_sha256": "20749934177220004c77f59ac76218df1fa065fb24c717f832e34a2008511bfb",
+      "build_files": {
+        "pyproject.toml": "1a08561b036753e792af5ede22844b650152d23c4bd00598c948e5928f433432",
+        "uv.lock": "7bf3f1be22ce1d335ba525f84200653c1e589242e6227255bdc4830638850b1c",
+        ".python-version": "845c494b4a7e1a741db19fd42eda239d3ee03b65f08276008943349a3055c9cc"
+      },
+      "build_sha256": "0a2e77fbe11f3a35f8b4206afa83a73e24ec8d6f548b6c2e0c363bed700ce8df",
+      "provenance_note": "Source hashes identify executable code even when report/docs commits follow."
+    },
+    "environment": {
+      "python": "3.12.15",
+      "implementation": "CPython",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "packages": {
+        "numpy": "2.2.5",
+        "pandas": "2.2.3",
+        "scikit-learn": "1.8.0",
+        "scipy": "1.17.1"
+      }
+    },
+    "identity": "3e64b103c64c41e18f5239ad1a0101aadb63e2dd00313e3840485a930438d9ee"
+  },
+  "processor": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+  "seed": 42,
+  "summary": [
+    {
+      "rows": 1000,
+      "mode": "frame",
+      "repeats": 3,
+      "median_wall_seconds": 0.07647319999523461,
+      "maximum_peak_process_rss_bytes": 72728576,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 1000,
+      "mode": "batches",
+      "repeats": 3,
+      "median_wall_seconds": 0.08005520000006072,
+      "maximum_peak_process_rss_bytes": 72519680,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 10000,
+      "mode": "frame",
+      "repeats": 3,
+      "median_wall_seconds": 0.7336900000009337,
+      "maximum_peak_process_rss_bytes": 108376064,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 10000,
+      "mode": "batches",
+      "repeats": 3,
+      "median_wall_seconds": 0.7994521000000532,
+      "maximum_peak_process_rss_bytes": 108474368,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 50000,
+      "mode": "frame",
+      "repeats": 3,
+      "median_wall_seconds": 5.401467000003322,
+      "maximum_peak_process_rss_bytes": 267489280,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    },
+    {
+      "rows": 50000,
+      "mode": "batches",
+      "repeats": 3,
+      "median_wall_seconds": 5.694110299999011,
+      "maximum_peak_process_rss_bytes": 267911168,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    }
+  ],
+  "measurements": [
+    {
+      "rows": 1000,
+      "mode": "frame",
+      "wall_seconds": 0.07658590000210097,
+      "events_per_second": 13057.233772438101,
+      "peak_process_rss_bytes": 72708096,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 577022,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 1000,
+      "mode": "frame",
+      "wall_seconds": 0.07647319999523461,
+      "events_per_second": 13076.476465772514,
+      "peak_process_rss_bytes": 72728576,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 577022,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 1000,
+      "mode": "frame",
+      "wall_seconds": 0.07587230000353884,
+      "events_per_second": 13180.040672990775,
+      "peak_process_rss_bytes": 72396800,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 577022,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 1000,
+      "mode": "batches",
+      "wall_seconds": 0.08005520000006072,
+      "events_per_second": 12491.380947136995,
+      "peak_process_rss_bytes": 72290304,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 577022,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 1000,
+      "mode": "batches",
+      "wall_seconds": 0.07938490000378806,
+      "events_per_second": 12596.854061065547,
+      "peak_process_rss_bytes": 72519680,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 577022,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 1000,
+      "mode": "batches",
+      "wall_seconds": 0.08211399999709101,
+      "events_per_second": 12178.191295460289,
+      "peak_process_rss_bytes": 72392704,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 577022,
+      "ledger_sha256": "ebfbdb2e0a73926f5ae5c2b1197b790a6758182ff56a402e53a10263da4f22d2",
+      "fill_count": 101
+    },
+    {
+      "rows": 10000,
+      "mode": "frame",
+      "wall_seconds": 0.731768200006627,
+      "events_per_second": 13665.529603376368,
+      "peak_process_rss_bytes": 107933696,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 5779022,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 10000,
+      "mode": "frame",
+      "wall_seconds": 0.7336900000009337,
+      "events_per_second": 13629.734629049428,
+      "peak_process_rss_bytes": 108044288,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 5779022,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 10000,
+      "mode": "frame",
+      "wall_seconds": 0.7912410999997519,
+      "events_per_second": 12638.372804450042,
+      "peak_process_rss_bytes": 108376064,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 5779022,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 10000,
+      "mode": "batches",
+      "wall_seconds": 0.7994521000000532,
+      "events_per_second": 12508.56680468953,
+      "peak_process_rss_bytes": 108445696,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 5779022,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 10000,
+      "mode": "batches",
+      "wall_seconds": 0.820746199999121,
+      "events_per_second": 12184.034479855904,
+      "peak_process_rss_bytes": 108474368,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 5779022,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 10000,
+      "mode": "batches",
+      "wall_seconds": 0.7569766000015079,
+      "events_per_second": 13210.447984759476,
+      "peak_process_rss_bytes": 108179456,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 5779022,
+      "ledger_sha256": "25ff3a7826db470fb5e4cd1a81613af9e46cd5668088069d4a5efb69c67ef478",
+      "fill_count": 1018
+    },
+    {
+      "rows": 50000,
+      "mode": "frame",
+      "wall_seconds": 5.371825100002752,
+      "events_per_second": 9307.823517927713,
+      "peak_process_rss_bytes": 267145216,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 28939022,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    },
+    {
+      "rows": 50000,
+      "mode": "frame",
+      "wall_seconds": 5.542448699998204,
+      "events_per_second": 9021.283318331156,
+      "peak_process_rss_bytes": 267489280,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 28939022,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    },
+    {
+      "rows": 50000,
+      "mode": "frame",
+      "wall_seconds": 5.401467000003322,
+      "events_per_second": 9256.744510328259,
+      "peak_process_rss_bytes": 267448320,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 28939022,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    },
+    {
+      "rows": 50000,
+      "mode": "batches",
+      "wall_seconds": 5.694110299999011,
+      "events_per_second": 8781.00306557263,
+      "peak_process_rss_bytes": 267911168,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 28939022,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    },
+    {
+      "rows": 50000,
+      "mode": "batches",
+      "wall_seconds": 5.579801300002146,
+      "events_per_second": 8960.892567981009,
+      "peak_process_rss_bytes": 267284480,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 28939022,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    },
+    {
+      "rows": 50000,
+      "mode": "batches",
+      "wall_seconds": 5.719827200002328,
+      "events_per_second": 8741.522820825714,
+      "peak_process_rss_bytes": 267468800,
+      "memory_method": "Windows GetProcessMemoryInfo PeakWorkingSetSize",
+      "input_frame_bytes": 28939022,
+      "ledger_sha256": "81494461a220d0e3cdb04a9f48db9178426efbbb761d539d132bf334ded6a4fc",
+      "fill_count": 5060
+    }
+  ],
+  "limitations": [
+    "Input generation and import time excluded from engine wall time; native peak process memory includes them.",
+    "Frame and batch modes use identical pre-generated input and produce identical ledger hashes.",
+    "Batch mode verifies the replay interface; retained signals/ledger and the input fixture still scale with event count.",
+    "This does not establish a fully out-of-core ML pipeline or exchange latency.",
+    "No C++ acceleration is claimed; optimization requires a measured justified bottleneck."
+  ]
+}

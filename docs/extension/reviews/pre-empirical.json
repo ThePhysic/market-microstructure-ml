@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "stage": "pre-empirical",
+  "status": "PASS",
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium"
+  },
+  "source_identity": "3e64b103c64c41e18f5239ad1a0101aadb63e2dd00313e3840485a930438d9ee",
+  "observed_revision": "5922a291da3715aa8079718dad6789f684180fa8",
+  "remaining_complaints": [],
+  "scope": "Independent adversarial review of extension acquisition, normalized lineage, temporal boundaries, causal features and signals, exact targets, chronological research, uncertainty, Decimal spot execution, configuration, source freeze, holdout registry and publication boundary before historical fitting or reserved scoring.",
+  "resolved_findings": [
+    {
+      "finding": "Floating-point midpoint differences misclassified exact one-cent threshold moves.",
+      "resolution": "Extension-only target construction compares exact integer half-tick midpoint changes. The original study source remains unchanged.",
+      "independent_confirmation": "A synthetic 40-state sequence of exact one-cent midpoint increases originally produced 25 up labels and 13 unchanged labels. The corrected extension produces all 38 unchanged labels as required. Tests also cover negative boundaries and directional half-tick moves."
+    },
+    {
+      "finding": "Invalid scenario accounting configurations could fail only after final model fitting.",
+      "resolution": "Outer configuration validation constructs base and every scenario SimulationConfig and validates minimum final blocks before input loading, registry mutation or fitting."
+    },
+    {
+      "finding": "An exact-list registry key did not prevent reuse of overlapping final dates under changed choices.",
+      "resolution": "Registry records explicit market and date identities and rejects any overlapping final dates bound to a different scientific contract; unchanged reproduction remains explicit."
+    }
+  ],
+  "independent_checks": [
+    "Initial offline synthetic extension suite: 138 passed in 21.46 seconds.",
+    "Post-fix research and configuration suite: 41 passed in 17.16 seconds, including overlap, accounting preflight and exact-target cases.",
+    "Read and examined acquisition/storage/coverage, replay/simulation/analytics, study/statistics/replication, CLI/config/provenance/reporting/benchmark and their synthetic tests.",
+    "Confirmed no same-observation fill, strict later-event order, segment cancellation/reset, explicit unresolved inventory, partial-depth IOC, fee-inclusive affordability, exact accounting reconciliation and signal lineage.",
+    "Confirmed execution decisions include unlabelled tail observations and do not use future metric eligibility.",
+    "Confirmed pilot removes final dates before target construction; final evaluation follows fixed expanding prequential fits with strictly earlier label endpoints.",
+    "Verified current Tardis terms dated 2026-10-28 directly: internal ML use and qualifying non-reconstructible research reports are supported; historical records and trained models remain local."
+  ],
+  "review_boundaries": [
+    "No historical model was fitted and no reserved target distribution, score or simulation output was inspected during this review.",
+    "This pass authorizes the frozen research workflow to proceed; it is not a claim of predictive gain, achieved precision, profitability or realistic exchange fills.",
+    "The development precision plan and final aggregate evidence require subsequent review. Four pilot blocks and eight final block equivalents do not establish independence; declared uncertainty remains conditional.",
+    "The local registry is an accidental-tuning guard, not tamper-proof enforcement across clones."
+  ],
+  "source_references": [
+    "https://docs.tardis.dev/legal/terms-of-service",
+    "https://arxiv.org/abs/1512.03492"
+  ]
+}

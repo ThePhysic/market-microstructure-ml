@@ -1,15 +1,99 @@
 # Market Microstructure ML & Validation Pipeline
 
-A reproducible Python research pipeline for one question: do order-book
-measurements help predict a short-horizon mid-price move beyond a simple
-majority rule and logistic regression?
+Reproducible Python software for historical order-book research, causal replay
+and hypothetical spot execution. The original study compares predictive models;
+the broader extension asks whether book features improve on past price history
+and separately evaluates a fixed execution policy.
 
 The project combines auditable historical-data ingestion, causal features,
 chronological evaluation, explicit leakage checks and portable research reports.
 It supports honest positive, negative and inconclusive findings. Classification
 scores alone do not establish trading profitability.
 
-## Start here
+## Broader spot extension: start here
+
+The extension asks whether book features improve on **past midpoint history
+alone**, then separately evaluates a declared hypothetical execution policy.
+It uses Bitstamp BTCUSD spot on 48 new monthly dates in 2021-2024, with eight
+fixed 15-minute windows per date. All 384 windows pass objective coverage:
+631,463 valid states, zero exclusions. This is sparse intraday sampling, not a
+continuous four-year backtest. Final extension predictive/execution results,
+clean reproduction, final review and hosted CI evidence are **pending** at this
+documentation checkpoint; the original completed result remains below.
+
+Install the locked environment in this checkout, then try the offline extension:
+
+    uv sync --frozen --extra dev
+    uv run python -m pytest -p no:cacheprovider
+    uv run python -m market_microstructure.extension demo --rows-per-date 80 --output artifacts/extension/demo-review
+
+The demo uses synthetic data. Open the report.html path printed by the command
+directly in a browser; no server is required. The core product is a local CLI
+and readable reports. The earlier [interactive proposal](proposal/index.html)
+is a synthetic design reference, not a data-connected trading application.
+
+For historical work, review the [source and permission evidence](docs/extension/data-source-evidence.md),
+[preregistered study](docs/extension/preregistered-study.md) and
+[research design](docs/extension/research-design.md) first. Only fetch uses the
+network. These commands use the frozen configuration, local raw directory and
+source lock by default:
+
+    uv run python -m market_microstructure.extension fetch
+    uv run python -m market_microstructure.extension coverage
+    uv run python -m market_microstructure.extension pilot --output artifacts/extension/pilot
+
+The pilot uses 2021-2022 data and evaluates the 2022 dates only. Final dates are
+removed before pilot target construction. Final evaluation requires a source/protocol freeze tied
+to the actual pilot and a clean Astra medium review. The following lifecycle
+template uses paths that must be replaced with those real artifacts:
+
+    uv run python -m market_microstructure.extension freeze --pilot path/to/pilot/experiment.json --review path/to/astra-review.json --output artifacts/extension/freeze.json
+    uv run python -m market_microstructure.extension run --freeze artifacts/extension/freeze.json --output reports/extension/runs
+
+The planned published reference is reports/extension/reference/experiment.json
+with sibling report.html and report.md. Once that reference exists, check or
+repeat its frozen experiment using a fresh output directory:
+
+    uv run python -m market_microstructure.extension verify --reference reports/extension/reference/experiment.json
+    uv run python -m market_microstructure.extension reproduce --reference reports/extension/reference/experiment.json --output artifacts/extension/reproduction-review
+    uv run python -m market_microstructure.extension report --reference reports/extension/reference/experiment.json --output artifacts/extension/report-review
+    uv run python -m market_microstructure.extension benchmark --sizes 1000,10000 --repeats 3 --output artifacts/extension/benchmark-review
+
+Verification checks inputs and frozen provenance without fitting. Reproduction
+requires exact numerical and ledger-hash agreement; it does not tune models.
+The benchmark uses synthetic inputs, native peak process memory and frame/batch
+parity. Its measurements are distinct from exchange or inference latency.
+
+The simulator is long/flat spot with explicit costs, action delays and displayed
+depth assumptions. Each segment starts with independent cash; unresolved final
+inventory is marked at observed bid, not sold through an unseen gap. There are
+no passive queue fills or live exchange orders. Historical signals, detailed
+ledgers, fitted preprocessing and models stay local. The private repository
+shares permitted aggregates, code and synthetic fixtures; private GitHub access
+alone does not grant rights to the provider's data or trained assets. External
+reviewers obtain their own permitted data. No hosted data-backed service is
+provided.
+
+The [milestone index](docs/extension/milestones.md) identifies evidence and
+remaining gates. The [applicant guide](docs/extension/applicant-guide.md) gives
+code-reading exercises and an honest account of what this project can show.
+
+## Reproduce the original 2020 study in its frozen checkout
+
+The extension adds executable modules, which changes the current source
+fingerprint. Exact verification/reproduction of the original study therefore
+requires its frozen v1 revision, **2ebb818**, in a separate worktree:
+
+    git worktree add --detach ../market-microstructure-v1 2ebb818
+    cd ../market-microstructure-v1
+    uv sync --frozen --extra dev
+
+Use that worktree's local environment, acquire its original sources and run
+the original-study commands below there. New extension commands belong in the
+current checkout. This preserves the original executable identity rather than
+weakening its source check to accommodate new modules.
+
+## Original 2020 study: start here
 
 1. Install the locked Python environment.
 2. Run the synthetic demonstration to learn the workflow without obtaining data.
