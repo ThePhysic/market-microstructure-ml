@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "comparison": "exact canonical match",
+  "experiment_id": "ext-b1465a64b304025d",
+  "source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f",
+  "scope": [
+    "all development/final classification metrics",
+    "all block intervals/decisions",
+    "method adaptation",
+    "all scenarios/model accounting aggregates",
+    "every ledger/signal/simulation hash",
+    "normalized states and frozen identities"
+  ],
+  "independence": "Separate clean checkout and virtual environment; finished all decisions before reading reference metrics.",
+  "policy": "Unchanged reproduction, not independent statistical evidence or model selection.",
+  "artifact": "artifacts\\extension\\reproduction-001\\ext-b1465a64b304025d\\experiment.json"
+}

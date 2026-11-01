@@ -1,0 +1,61 @@
+{
+  "kind": "stack_sampling_profile",
+  "tool": "py-spy 0.4.2",
+  "duration_seconds": 20,
+  "sampling_rate_hz": 25,
+  "samples": 499,
+  "errors": 0,
+  "hist_gradient_boosting_stack_samples": 398,
+  "top_leaf_frames": [
+    {
+      "frame": "_initialize_root (sklearn\\ensemble\\_hist_gradient_boosting\\grower.py:423)",
+      "samples": 114
+    },
+    {
+      "frame": "gradient_hessian (sklearn\\_loss\\loss.py:373)",
+      "samples": 83
+    },
+    {
+      "frame": "split_next (sklearn\\ensemble\\_hist_gradient_boosting\\grower.py:506)",
+      "samples": 75
+    },
+    {
+      "frame": "split_next (sklearn\\ensemble\\_hist_gradient_boosting\\grower.py:621)",
+      "samples": 58
+    },
+    {
+      "frame": "argsort (numpy\\ma\\core.py:5725)",
+      "samples": 39
+    },
+    {
+      "frame": "predict (sklearn\\ensemble\\_hist_gradient_boosting\\predictor.py:81)",
+      "samples": 33
+    },
+    {
+      "frame": "loss_gradient (sklearn\\_loss\\loss.py:258)",
+      "samples": 20
+    },
+    {
+      "frame": "fit (sklearn\\ensemble\\_hist_gradient_boosting\\gradient_boosting.py:979)",
+      "samples": 9
+    },
+    {
+      "frame": "__init__ (sklearn\\ensemble\\_hist_gradient_boosting\\grower.py:319)",
+      "samples": 7
+    },
+    {
+      "frame": "fit (sklearn\\ensemble\\_hist_gradient_boosting\\gradient_boosting.py:937)",
+      "samples": 7
+    },
+    {
+      "frame": "_take_nd_ndarray (pandas\\core\\array_algos\\take.py:162)",
+      "samples": 6
+    },
+    {
+      "frame": "_signals (market_microstructure\\extension\\study.py:290)",
+      "samples": 5
+    }
+  ],
+  "scope": "One short window during a predeclared final scheduled fit; not an end-to-end stage-time breakdown. No model values, predictions, targets or outcomes sampled.",
+  "source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f"
+}

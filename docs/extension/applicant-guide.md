@@ -1,10 +1,13 @@
 # Applicant and reviewer guide
 
 This is a research-engineering project with a completed original study and a
-broader spot extension. The extension's data/coverage checkpoint is complete;
-its empirical findings, final reproduction/review and publication checks are
-pending at this writing. Use the [milestone index](milestones.md) for the final
-evidence status. Building the software with assistance does not by itself
+broader spot extension. The historical experiment and its independent clean
+reproduction are complete, with exact metric and simulation-hash agreement.
+Use the [research account](research-report.md), [validation record](../../reports/extension/validation.json)
+and [milestone index](milestones.md) for the result and final delivery evidence.
+The precision criterion remains unmet; this is exploratory predictive evidence,
+and the declared trading policies lose under the hypothetical assumptions.
+Building the software with assistance does not by itself
 establish the applicant's ability to explain, modify or independently validate
 it. The exercises below are work for the applicant to perform, not achievements
 claimed on their behalf.
@@ -19,17 +22,17 @@ claimed on their behalf.
    spot, what is sampled, and how are original rows traced?
 3. Run the offline synthetic demo from the [README](../../README.md). Read its
    report as a demonstration of software behavior, not a market result.
-4. Inspect the separate classification and execution sections of the eventual
-   published reference. A predictive gain, hypothetical P&L and engineering
+4. Inspect the separate classification and execution sections of the
+   [published reference](../../reports/extension/reference/report.html). A predictive gain, hypothetical P&L and engineering
    acceptance are three different conclusions.
 5. Check the source/config/data identities, independent review, clean-checkout
    reproduction and benchmark evidence before repeating a portfolio claim.
 
-The intended aggregate deliverables are reports/extension/reference/ with
-experiment.json, report.html and report.md, reports/extension/pilot/experiment.json,
-reports/extension/benchmark.json and reports/extension/validation.json. Final
-review memos belong under docs/extension/reviews/. These paths are delivery
-targets until the milestone evidence records their completion.
+The aggregate deliverables are reports/extension/reference/ with experiment.json,
+report.html and report.md, reports/extension/pilot/experiment.json, the independent
+reproduction proof, measured benchmarks and reports/extension/validation.json.
+Review memos belong under docs/extension/reviews/. Read their actual status
+rather than assuming software checks establish a predictive or trading edge.
 
 ## What the system does
 

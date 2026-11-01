@@ -17,9 +17,28 @@ alone**, then separately evaluates a declared hypothetical execution policy.
 It uses Bitstamp BTCUSD spot on 48 new monthly dates in 2021-2024, with eight
 fixed 15-minute windows per date. All 384 windows pass objective coverage:
 631,463 valid states, zero exclusions. This is sparse intraday sampling, not a
-continuous four-year backtest. Final extension predictive/execution results,
-clean reproduction, final review and hosted CI evidence are **pending** at this
-documentation checkpoint; the original completed result remains below.
+continuous four-year backtest. The frozen study and an independent execution
+in a separate clean checkout match exactly, including metrics and all simulation
+hashes. Both checkouts passed 374 tests; the real report passed 17 browser checks.
+Final review and delivery evidence is recorded in the
+[validation record](reports/extension/validation.json).
+
+The new predictive evidence is **exploratory: the precision gate was not met**.
+On 24 final dates, date-mean macro F1 is 0.405650 for history-only logistic,
+0.458722 for book-feature logistic and 0.488190 for boosting. Book minus history
+is +0.053071, with a conditional 95% date-block interval [0.023520, 0.068959].
+Its half-width 0.022720 exceeds the declared 0.015 target; development planning
+also failed that target. These results do not establish a conclusive market edge.
+
+Every fixed trading policy has negative hypothetical marked P&L in all four
+scenarios; no-trade is zero. The `zero_cost_diagnostic` removes added fees and
+slippage, but buying at ask and selling/marking at bid still crosses the spread.
+P&L totals sum independent segment trials, not returns on one continuous account.
+See the [research account](docs/extension/research-report.md) for class-level
+differences, cost scenarios and limits. The original study remains unchanged;
+its different instrument, target and periods prevent direct score comparisons.
+
+[View the actual aggregate report preview](docs/extension/assets/research-report.png).
 
 Install the locked environment in this checkout, then try the offline extension:
 
@@ -45,14 +64,14 @@ source lock by default:
 The pilot uses 2021-2022 data and evaluates the 2022 dates only. Final dates are
 removed before pilot target construction. Final evaluation requires a source/protocol freeze tied
 to the actual pilot and a clean Astra medium review. The following lifecycle
-template uses paths that must be replaced with those real artifacts:
+workflow uses the published planning and review records:
 
-    uv run python -m market_microstructure.extension freeze --pilot path/to/pilot/experiment.json --review path/to/astra-review.json --output artifacts/extension/freeze.json
+    uv run python -m market_microstructure.extension freeze --pilot reports/extension/pilot/experiment.json --review docs/extension/reviews/pre-empirical.json --output artifacts/extension/freeze.json
     uv run python -m market_microstructure.extension run --freeze artifacts/extension/freeze.json --output reports/extension/runs
 
-The planned published reference is reports/extension/reference/experiment.json
-with sibling report.html and report.md. Once that reference exists, check or
-repeat its frozen experiment using a fresh output directory:
+The [published reference](reports/extension/reference/experiment.json) has a
+[readable HTML report](reports/extension/reference/report.html) and sibling
+Markdown. Check or repeat its frozen experiment using a fresh output directory:
 
     uv run python -m market_microstructure.extension verify --reference reports/extension/reference/experiment.json
     uv run python -m market_microstructure.extension reproduce --reference reports/extension/reference/experiment.json --output artifacts/extension/reproduction-review

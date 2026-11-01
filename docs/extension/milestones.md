@@ -1,21 +1,21 @@
 # Extension E0-E7 evidence index
 
-This checkpoint records completed data evidence and the remaining delivery
-gates. It does not announce empirical findings, a clean final review, hosted CI
-success or an extension push before those events occur. The original completed
-2020 study remains separate; its historical P0-P6 memos are not evidence that
-the new extension has passed the corresponding gates.
+This index separates implementation acceptance, empirical precision and external
+delivery. The [completed research account](research-report.md) reports the new
+measurements; [validation](../../reports/extension/validation.json) records actual
+checks and remaining delivery gates. The original completed 2020 study remains
+separate. Its historical P0-P6 memos do not establish extension acceptance.
 
 | Milestone | Purpose and review entry point | Checkpoint status |
 | --- | --- | --- |
 | E0 - Source and research permission | [Source evidence](data-source-evidence.md), [source lock](../../data/extension-sources.lock.json), [protocol](preregistered-study.md) | PASS: accessible Bitstamp BTCUSD spot, frozen dates/windows, licensed local research boundary |
-| E1 - Broader design and precision | [Research design](research-design.md), [fixed configuration](../../configs/research-extension.json), statistics tests | Protocol recorded before fitting; development planning and final precision evidence pending |
+| E1 - Broader design and precision | [Research design](research-design.md), [fixed configuration](../../configs/research-extension.json), statistics tests | Design implemented; research precision NOT MET: projected half-width 0.046474 and achieved primary half-width 0.022720 exceed 0.015. Final claims remain exploratory |
 | E2 - Acquisition, storage and coverage | acquisition.py, coverage.py, storage.py; [data tests](../../tests/test_extension_data.py) | PASS: 48 dates, 384 windows, 631,463 valid states, zero exclusions; 45 offline data tests |
-| E3 - Causal replay and execution | [Replay/simulation tests](../../tests/test_extension_simulation.py), declared scenario configuration | Implementation and synthetic adversarial tests present; final integrated acceptance pending |
-| E4 - Temporal research and simulations | [study.py](../../src/market_microstructure/extension/study.py), [research tests](../../tests/test_extension_research.py) | Fixed primary/secondary comparisons implemented; historical pilot/final measurements pending |
-| E5 - Published-method assessment | [Method scope](research-design.md#external-published-method), replication.py | Development-only methodological adaptation implemented; numerical reproduction of the paper is not claimed; measured adaptation result pending |
-| E6 - Measured scaling and parity | benchmark.py; synthetic frame/batch replay with native peak memory | Harness implemented; repeatable measured benchmark evidence pending |
-| E7 - Independent verification and delivery | Source freeze, clean checkout, exact numerical/ledger reproduction, Astra medium review, private remote verification | Pending final evidence; new hosted CI and push not yet claimed |
+| E3 - Causal replay and execution | [Replay/simulation tests](../../tests/test_extension_simulation.py), declared scenario configuration | 57 simulator tests; 374 integrated tests; 20 completed scenario/policy cases reproduced exactly. Independent full accounting reconciliation is tracked in validation |
+| E4 - Temporal research and simulations | [study.py](../../src/market_microstructure/extension/study.py), [research tests](../../tests/test_extension_research.py) | Completed 12 development and 24 prequential final dates; 4,244 independent numerical checks pass; all fixed trading policies have negative marked P&L under every declared scenario |
+| E5 - Published-method assessment | [Method scope](research-design.md#external-published-method), replication.py | Measured development-only adaptation: 68,471 binary targets; analytic null/prior checks pass. Original paper numerical reproduction is not claimed |
+| E6 - Measured scaling and parity | [Benchmark](../../reports/extension/benchmark.json), [short fit profile](../../reports/extension/fit-profile.json) | 18 independent worker measurements; exact repeated frame/batch ledger parity; native peak memory and timing boundaries recorded; no custom C++ or fully out-of-core ML claim |
+| E7 - Independent verification and delivery | [Reproduction](../../reports/extension/reproduction.json), source freeze, reviews, remote verification | Clean checkout 374 tests, exact complete reproduction and actual CLI fingerprint verification PASS. Final accounting/review and post-push checks are recorded in validation; hosted CI is not inferred from local checks |
 
 All implementation paths above are under
 [src/market_microstructure/extension](../../src/market_microstructure/extension).
@@ -54,7 +54,7 @@ temporary directory were required; the passing exact invocation is recorded
 in the source evidence. The tests use independent synthetic fixtures and are
 offline. No actual event records are embedded in this index.
 
-## Intended aggregate handoffs
+## Aggregate handoffs
 
 | Artifact path | Required evidence before marking complete |
 | --- | --- |
@@ -67,11 +67,12 @@ offline. No actual event records are embedded in this index.
 | docs/extension/reviews/final.json | Final Astra medium review with all substantive complaints resolved |
 | Existing private GitHub remote | Verified privacy, expected branch/commit and successful final push; no restricted historical or fitted assets |
 
-These are intended delivery paths, not a statement that every file already
-exists. Source freezes precede final scoring; reproductions repeat unchanged
-decisions and are disclosed separately. Benchmark mode generates its local
-benchmark.json under the selected output directory; publication may copy that
-aggregate to the stable path above.
+Source freezes precede final scoring; reproductions repeat unchanged decisions
+and are disclosed separately. Benchmark mode generates its local benchmark.json
+under the selected output directory; publication copies that aggregate to the
+stable path above. Review files and validation distinguish completed checks from
+external publication steps. Post-push privacy, commit and hosted workflow status
+must be verified separately; a pre-publication commit cannot certify its own push.
 
 ## Acceptance and interpretation
 

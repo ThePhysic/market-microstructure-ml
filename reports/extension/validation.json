@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "status": "pending-final-accounting-and-adversarial-review",
+  "source_identity": "4c0da99b0b5406670b2e120fa63d74d401ccb8b72bc84eb5e867be0103e4c08f",
+  "frozen_revision": "1f4d584",
+  "reference_experiment_id": "ext-b1465a64b304025d",
+  "original_study": {
+    "source_files_changed": [],
+    "reference_artifacts_preserved": true,
+    "exact_reproduction_revision": "2ebb818"
+  },
+  "tests": {
+    "integrated_passed": 374,
+    "integrated_seconds": 54.06,
+    "clean_checkout_passed": 374,
+    "clean_checkout_seconds": 54.18,
+    "renderer_after_presentation_fix_passed": 4,
+    "static_analysis": "Ruff 0.14.1 E9,F63,F7,F82 PASS"
+  },
+  "data": {
+    "dates": 48,
+    "windows": 384,
+    "valid_states": 631463,
+    "excluded_states": 0,
+    "segments": 385,
+    "selected_hours": 96,
+    "normalized_states_sha256": "250c537888766630fc3c14f1836a2b4212ed828720ef255edce8fa60864645cb",
+    "full_source_compressed_bytes": 268550418,
+    "accounted_transfer_bytes": 268575042,
+    "local_historical_bytes": 406304342,
+    "full_gzip_crc_verified": true,
+    "grid_violations": 0
+  },
+  "development": {
+    "quantitative_reexecution": "exact canonical match",
+    "independent_numeric_checks": 1292,
+    "independent_numeric_max_error": 1.1102230246251565e-16,
+    "precision_target_half_width": 0.015,
+    "estimated_final_half_width": 0.0464740771780679,
+    "precision_status": "insufficient_precision",
+    "interpretation": "231 observed dates is an uncertain planning extrapolation from four pilot blocks, not a certified requirement. Fixed final study remains exploratory."
+  },
+  "browser": {
+    "synthetic_checks_passed": 17,
+    "widths": [
+      320,
+      390,
+      720,
+      1440
+    ],
+    "visual_complaints": [],
+    "final_reference": {
+      "status": "PASS",
+      "checks": 17,
+      "engine": "Chromium",
+      "visual_complaints": [],
+      "network_requests": 0,
+      "runtime_exceptions": 0,
+      "evidence": "_qa/extension-browser-final (local screenshots/check logs)"
+    }
+  },
+  "performance": {
+    "artifact": "reports/extension/benchmark.json",
+    "independent_worker_measurements": 18,
+    "result_parity": "identical ledger hashes across frame/batch/repeated inputs",
+    "peak_rss_method": "native process maximum working set",
+    "scope": "Synthetic engine workload; input/import time excluded from wall time, included in native peak memory. Ledger/signals retained; fully out-of-core ML and exchange latency are not claimed.",
+    "source_note": "Benchmark source precedes presentation-only reporting.py changes; simulator/replay/accounting bytes are unchanged."
+  },
+  "final_reproduction": {
+    "status": "PASS",
+    "comparison": "exact canonical match",
+    "proof": "reports/extension/reproduction.json",
+    "scope": [
+      "all development/final classification metrics",
+      "all moving-block intervals and decisions",
+      "development-only adaptation",
+      "all20 simulation aggregates",
+      "all signal/ledger/simulation hashes",
+      "normalized input and source identities"
+    ],
+    "method": "Separate clean checkout and environment executed the same frozen _inputs/_execute functions independently before reading reference metrics. The canonical projection was compared afterward; this is unchanged reproduction, not independent statistical evidence."
+  },
+  "final_adversarial_review": "pending",
+  "publication": "Reviewed source and aggregate bundle will be pushed only after clean final review; private remote commit and hosted CI are verified after push.",
+  "excluded_from_publication": [
+    "historical event rows",
+    "predictions/signals",
+    "order/fill/portfolio ledgers",
+    "per-segment detail",
+    "trained models",
+    "fitted preprocessing values",
+    "credentials",
+    "local caches"
+  ],
+  "cli_reference_verification": {
+    "status": "PASS",
+    "checkouts": [
+      "build",
+      "separate durable checkout"
+    ],
+    "checks": [
+      "raw checksums",
+      "selection",
+      "coverage",
+      "normalized states",
+      "source/build/runtime",
+      "protocol"
+    ],
+    "note": "Actual read-only CLI verify command independently passed in both checkouts."
+  },
+  "final_numeric_audit": {
+    "status": "PASS",
+    "checks": 4244,
+    "artifact": "reports/extension/numeric-audit.json",
+    "max_absolute_numeric_error": 1.4551915228366852e-11,
+    "scope": "Closed-form confusion-matrix/per-class/date summaries, block intervals, precision flags and analytic probability baselines; fitted probability scores cannot be reconstructed from confusion matrices alone."
+  },
+  "research": {
+    "formal_status": "exploratory_precision_unmet",
+    "research_decisiveness_met": false,
+    "development_planning_precision_met": false,
+    "achieved_primary_interval_half_width": 0.022719639681211972,
+    "target_half_width": 0.015,
+    "final_dates": 24,
+    "final_labeled_rows": 331599,
+    "primary_difference": 0.053071300842719354,
+    "primary_conditional_interval": [
+      0.023520068274924914,
+      0.06895934763734886
+    ],
+    "secondary_difference": 0.029468038243780807,
+    "secondary_conditional_interval": [
+      0.0179658862340675,
+      0.04468838063506889
+    ],
+    "note": "Conditional predictive gains do not waive failed precision or stationarity/dependence limitations."
+  },
+  "execution": {
+    "scenario_policy_cases": 20,
+    "trading_cases": 16,
+    "negative_trading_cases": 16,
+    "no_trade_cases": 4,
+    "no_trade_pnl": "0",
+    "scope": "Marked P&L sums independent segments. Zero-cost diagnostic removes added fees/slippage; observed spread crossing remains. No live fills or profitability claim."
+  },
+  "final_accounting_audit": "pending"
+}
